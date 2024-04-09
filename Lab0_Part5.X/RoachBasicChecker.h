@@ -61,6 +61,7 @@ uint8_t TemplateCheckBattery(void);
 
 uint8_t CheckLightLevel(void);
 
+uint8_t CheckBumperState(void);
 
 #endif	/* TEMPLATEEVENTCHECKER_H */
 

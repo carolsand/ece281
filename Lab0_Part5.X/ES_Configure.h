@@ -46,6 +46,8 @@ typedef enum {
     /* User-defined events start here */
     LIGHT,
     DARK,
+    PUSHED,
+    NOT_PUSHED,
     BATTERY_CONNECTED,
     BATTERY_DISCONNECTED,
     NUMBEROFEVENTS,
@@ -64,6 +66,8 @@ static const char *EventNames[] = {
 	"ES_TIMERSTOPPED",
 	"LIGHT",
 	"DARK",
+	"PUSHED",
+	"NOT_PUSHED",
 	"BATTERY_CONNECTED",
 	"BATTERY_DISCONNECTED",
 	"NUMBEROFEVENTS",
@@ -78,7 +82,7 @@ static const char *EventNames[] = {
 
 /****************************************************************************/
 // This is the list of event checking functions
-#define EVENT_CHECK_LIST  TemplateCheckBattery, CheckLightLevel
+#define EVENT_CHECK_LIST  TemplateCheckBattery, CheckLightLevel, CheckBumperState
 
 /****************************************************************************/
 // These are the definitions for the post functions to be executed when the

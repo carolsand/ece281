@@ -52,6 +52,8 @@
 static const char *eventName;
 static ES_Event storedEvent;
 static ES_EventTyp_t lastLightState;
+static ES_EventTyp_t lastBumperState;
+static uint16_t lastBumperValue;
 
 //static enum lastLightState;
 
@@ -89,8 +91,7 @@ static ES_EventTyp_t lastLightState;
  * @note Use this code as a template for your other event checkers, and modify as necessary.
  * @author Gabriel H Elkaim, 2013.09.27 09:18
  * @modified Gabriel H Elkaim/Max Dunne, 2016.09.12 20:08 */
-uint8_t TemplateCheckBattery(void)
-{
+uint8_t TemplateCheckBattery(void) {
     static ES_EventTyp_t lastEvent = BATTERY_DISCONNECTED;
     ES_EventTyp_t curEvent;
     ES_Event thisEvent;
@@ -116,9 +117,7 @@ uint8_t TemplateCheckBattery(void)
     return (returnVal);
 }
 
-
-uint8_t CheckLightLevel(void)
-{
+uint8_t CheckLightLevel(void) {
     ES_EventTyp_t currentLightState;
     uint16_t currentLightValue;
     ES_Event ThisEvent;
@@ -148,6 +147,39 @@ uint8_t CheckLightLevel(void)
     return returnVal;
 }
 
+uint8_t CheckBumperState(void) {
+    ES_EventTyp_t currentBumperState;
+    uint16_t currentBumperValue;
+    ES_Event ThisEvent;
+    uint8_t returnVal = FALSE;
+    // check the light level and assign LIGHT or DARK
+    currentBumperValue = Roach_ReadBumpers();
+    
+    if(currentBumperValue != lastBumperValue) {
+        currentBumperState = PUSHED;
+    }
+    
+    if(currentBumperValue == 0) {
+        currentBumperState = NOT_PUSHED;
+    }
+    
+    if (currentBumperState != lastBumperState) { //event detected
+        ThisEvent.EventType = currentBumperState;
+        ThisEvent.EventParam = currentBumperValue;
+        returnVal = TRUE;
+        lastBumperState = currentBumperState;
+
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostGenericService(ThisEvent);
+#else
+        SaveEvent(ThisEvent);
+#endif   
+    }
+    return returnVal;
+}
+
+
+
 
 /* 
  * The Test Harness for the event checkers is conditionally compiled using
@@ -176,12 +208,14 @@ static uint8_t(*EventList[])(void) = {EVENT_CHECK_LIST};
 
 void PrintEvent(void);
 
-void main(void)
-{
+void main(void) {
     BOARD_Init();
     /* user initialization code goes here */
     Roach_Init();
     lastLightState = DARK;
+    lastBumperState = NOT_PUSHED;
+    lastBumperValue = Roach_ReadBumpers();
+    
     // Do not alter anything below this line
     int i;
 
@@ -200,8 +234,7 @@ void main(void)
     }
 }
 
-void PrintEvent(void)
-{
+void PrintEvent(void) {
     printf("\r\nFunc: %s\tEvent: %s\tParam: 0x%X", eventName,
             EventNames[storedEvent.EventType], storedEvent.EventParam);
 }
