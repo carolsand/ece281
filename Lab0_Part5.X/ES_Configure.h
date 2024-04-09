@@ -44,6 +44,8 @@ typedef enum {
     ES_TIMERACTIVE, /* signals that a timer has become active */
     ES_TIMERSTOPPED, /* signals that a timer has stopped*/
     /* User-defined events start here */
+    LIGHT,
+    DARK,
     BATTERY_CONNECTED,
     BATTERY_DISCONNECTED,
     NUMBEROFEVENTS,
@@ -60,6 +62,8 @@ static const char *EventNames[] = {
 	"ES_TIMEOUT",
 	"ES_TIMERACTIVE",
 	"ES_TIMERSTOPPED",
+	"LIGHT",
+	"DARK",
 	"BATTERY_CONNECTED",
 	"BATTERY_DISCONNECTED",
 	"NUMBEROFEVENTS",
@@ -70,11 +74,11 @@ static const char *EventNames[] = {
 
 /****************************************************************************/
 // This are the name of the Event checking function header file.
-#define EVENT_CHECK_HEADER "TemplateEventChecker.h"
+#define EVENT_CHECK_HEADER "RoachBasicChecker.h"
 
 /****************************************************************************/
 // This is the list of event checking functions
-#define EVENT_CHECK_LIST  TemplateCheckBattery
+#define EVENT_CHECK_LIST  TemplateCheckBattery, CheckLightLevel
 
 /****************************************************************************/
 // These are the definitions for the post functions to be executed when the

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/debug/Lab0_Part5.X.debug.elf">                 
+  <executable name="dist/default/production/Lab0_Part5.X.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>126464</length>                 
-      <used>39428</used>                     
-      <free>87036</free>                     
+      <used>39436</used>                     
+      <free>87028</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 

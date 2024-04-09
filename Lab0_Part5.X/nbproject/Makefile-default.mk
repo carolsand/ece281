@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=C:/ECE118/src/AD.c C:/ECE118/src/BOARD.c C:/ECE118/src/ES_CheckEvents.c C:/ECE118/src/ES_Framework.c C:/ECE118/src/ES_KeyboardInput.c C:/ECE118/src/ES_PostList.c C:/ECE118/src/ES_Queue.c C:/ECE118/src/ES_TattleTale.c C:/ECE118/src/ES_Timers.c C:/ECE118/src/IO_Ports.c C:/ECE118/src/LED.c C:/ECE118/src/pwm.c C:/ECE118/src/roach.c C:/ECE118/src/serial.c C:/ECE118/src/timers.c C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.c
+SOURCEFILES_QUOTED_IF_SPACED=C:/ECE118/src/AD.c C:/ECE118/src/BOARD.c C:/ECE118/src/ES_CheckEvents.c C:/ECE118/src/ES_Framework.c C:/ECE118/src/ES_KeyboardInput.c C:/ECE118/src/ES_PostList.c C:/ECE118/src/ES_Queue.c C:/ECE118/src/ES_TattleTale.c C:/ECE118/src/ES_Timers.c C:/ECE118/src/IO_Ports.c C:/ECE118/src/LED.c C:/ECE118/src/pwm.c C:/ECE118/src/roach.c C:/ECE118/src/serial.c C:/ECE118/src/timers.c C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicCheck.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1975241074/AD.o ${OBJECTDIR}/_ext/1975241074/BOARD.o ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o ${OBJECTDIR}/_ext/1975241074/ES_Framework.o ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1975241074/ES_PostList.o ${OBJECTDIR}/_ext/1975241074/ES_Queue.o ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o ${OBJECTDIR}/_ext/1975241074/IO_Ports.o ${OBJECTDIR}/_ext/1975241074/LED.o ${OBJECTDIR}/_ext/1975241074/pwm.o ${OBJECTDIR}/_ext/1975241074/roach.o ${OBJECTDIR}/_ext/1975241074/serial.o ${OBJECTDIR}/_ext/1975241074/timers.o ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1975241074/AD.o.d ${OBJECTDIR}/_ext/1975241074/BOARD.o.d ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o.d ${OBJECTDIR}/_ext/1975241074/ES_Framework.o.d ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o.d ${OBJECTDIR}/_ext/1975241074/ES_PostList.o.d ${OBJECTDIR}/_ext/1975241074/ES_Queue.o.d ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o.d ${OBJECTDIR}/_ext/1975241074/ES_Timers.o.d ${OBJECTDIR}/_ext/1975241074/IO_Ports.o.d ${OBJECTDIR}/_ext/1975241074/LED.o.d ${OBJECTDIR}/_ext/1975241074/pwm.o.d ${OBJECTDIR}/_ext/1975241074/roach.o.d ${OBJECTDIR}/_ext/1975241074/serial.o.d ${OBJECTDIR}/_ext/1975241074/timers.o.d ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1975241074/AD.o ${OBJECTDIR}/_ext/1975241074/BOARD.o ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o ${OBJECTDIR}/_ext/1975241074/ES_Framework.o ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1975241074/ES_PostList.o ${OBJECTDIR}/_ext/1975241074/ES_Queue.o ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o ${OBJECTDIR}/_ext/1975241074/IO_Ports.o ${OBJECTDIR}/_ext/1975241074/LED.o ${OBJECTDIR}/_ext/1975241074/pwm.o ${OBJECTDIR}/_ext/1975241074/roach.o ${OBJECTDIR}/_ext/1975241074/serial.o ${OBJECTDIR}/_ext/1975241074/timers.o ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1975241074/AD.o.d ${OBJECTDIR}/_ext/1975241074/BOARD.o.d ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o.d ${OBJECTDIR}/_ext/1975241074/ES_Framework.o.d ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o.d ${OBJECTDIR}/_ext/1975241074/ES_PostList.o.d ${OBJECTDIR}/_ext/1975241074/ES_Queue.o.d ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o.d ${OBJECTDIR}/_ext/1975241074/ES_Timers.o.d ${OBJECTDIR}/_ext/1975241074/IO_Ports.o.d ${OBJECTDIR}/_ext/1975241074/LED.o.d ${OBJECTDIR}/_ext/1975241074/pwm.o.d ${OBJECTDIR}/_ext/1975241074/roach.o.d ${OBJECTDIR}/_ext/1975241074/serial.o.d ${OBJECTDIR}/_ext/1975241074/timers.o.d ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1975241074/AD.o ${OBJECTDIR}/_ext/1975241074/BOARD.o ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o ${OBJECTDIR}/_ext/1975241074/ES_Framework.o ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1975241074/ES_PostList.o ${OBJECTDIR}/_ext/1975241074/ES_Queue.o ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o ${OBJECTDIR}/_ext/1975241074/IO_Ports.o ${OBJECTDIR}/_ext/1975241074/LED.o ${OBJECTDIR}/_ext/1975241074/pwm.o ${OBJECTDIR}/_ext/1975241074/roach.o ${OBJECTDIR}/_ext/1975241074/serial.o ${OBJECTDIR}/_ext/1975241074/timers.o ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o
+OBJECTFILES=${OBJECTDIR}/_ext/1975241074/AD.o ${OBJECTDIR}/_ext/1975241074/BOARD.o ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o ${OBJECTDIR}/_ext/1975241074/ES_Framework.o ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1975241074/ES_PostList.o ${OBJECTDIR}/_ext/1975241074/ES_Queue.o ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o ${OBJECTDIR}/_ext/1975241074/IO_Ports.o ${OBJECTDIR}/_ext/1975241074/LED.o ${OBJECTDIR}/_ext/1975241074/pwm.o ${OBJECTDIR}/_ext/1975241074/roach.o ${OBJECTDIR}/_ext/1975241074/serial.o ${OBJECTDIR}/_ext/1975241074/timers.o ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o
 
 # Source Files
-SOURCEFILES=C:/ECE118/src/AD.c C:/ECE118/src/BOARD.c C:/ECE118/src/ES_CheckEvents.c C:/ECE118/src/ES_Framework.c C:/ECE118/src/ES_KeyboardInput.c C:/ECE118/src/ES_PostList.c C:/ECE118/src/ES_Queue.c C:/ECE118/src/ES_TattleTale.c C:/ECE118/src/ES_Timers.c C:/ECE118/src/IO_Ports.c C:/ECE118/src/LED.c C:/ECE118/src/pwm.c C:/ECE118/src/roach.c C:/ECE118/src/serial.c C:/ECE118/src/timers.c C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.c
+SOURCEFILES=C:/ECE118/src/AD.c C:/ECE118/src/BOARD.c C:/ECE118/src/ES_CheckEvents.c C:/ECE118/src/ES_Framework.c C:/ECE118/src/ES_KeyboardInput.c C:/ECE118/src/ES_PostList.c C:/ECE118/src/ES_Queue.c C:/ECE118/src/ES_TattleTale.c C:/ECE118/src/ES_Timers.c C:/ECE118/src/IO_Ports.c C:/ECE118/src/LED.c C:/ECE118/src/pwm.c C:/ECE118/src/roach.c C:/ECE118/src/serial.c C:/ECE118/src/timers.c C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicCheck.c
 
 
 
@@ -78,7 +78,23 @@ LDLIBSOPTIONS=
 # fixDeps replaces a bunch of sed/cat/printf statements that slow down the build
 FIXDEPS=fixDeps
 
-.build-conf:  ${BUILD_SUBPROJECTS}
+# The following macros may be used in the pre and post step lines
+_/_=\\
+ShExtension=.bat
+Device=PIC32MX320F128H
+ProjectDir="C:\Users\crisvasquez\Desktop\ECE118_2024\ece118-2024\Lab0_Part5.X"
+ProjectName=Lab0_Part5
+ConfName=default
+ImagePath="dist\default\${IMAGE_TYPE}\Lab0_Part5.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
+ImageDir="dist\default\${IMAGE_TYPE}"
+ImageName="Lab0_Part5.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
+ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+IsDebug="true"
+else
+IsDebug="false"
+endif
+
+.build-conf:  .pre ${BUILD_SUBPROJECTS}
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
@@ -191,11 +207,11 @@ ${OBJECTDIR}/_ext/1975241074/timers.o: C:/ECE118/src/timers.c  .generated_files/
 	@${RM} ${OBJECTDIR}/_ext/1975241074/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -DEVENTCHECKER_TEST -I"." -I"../../../../../../ECE118/include" -I"../../../../../../ECE118/templates" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1975241074/timers.o.d" -o ${OBJECTDIR}/_ext/1975241074/timers.o C:/ECE118/src/timers.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o: C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.c  .generated_files/flags/default/89b769d532c76717cfaaed2b4d8af0fa0a0af30b .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o: C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicCheck.c  .generated_files/flags/default/33196959a54e08eee7e64ae41db9381f26181c06 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/621225903" 
-	@${RM} ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o.d 
-	@${RM} ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -DEVENTCHECKER_TEST -I"." -I"../../../../../../ECE118/include" -I"../../../../../../ECE118/templates" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o.d" -o ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o.d 
+	@${RM} ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -DEVENTCHECKER_TEST -I"." -I"../../../../../../ECE118/include" -I"../../../../../../ECE118/templates" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o.d" -o ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicCheck.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
 ${OBJECTDIR}/_ext/1975241074/AD.o: C:/ECE118/src/AD.c  .generated_files/flags/default/b6b4bab7e224693354af4ee1e93ceae8ac1cb845 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
@@ -288,11 +304,11 @@ ${OBJECTDIR}/_ext/1975241074/timers.o: C:/ECE118/src/timers.c  .generated_files/
 	@${RM} ${OBJECTDIR}/_ext/1975241074/timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -DEVENTCHECKER_TEST -I"." -I"../../../../../../ECE118/include" -I"../../../../../../ECE118/templates" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/1975241074/timers.o.d" -o ${OBJECTDIR}/_ext/1975241074/timers.o C:/ECE118/src/timers.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o: C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.c  .generated_files/flags/default/4990d73e2a43a73787745d22aaf50ff3146496af .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o: C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicCheck.c  .generated_files/flags/default/3bc5da95a7c934fce0fff4c1b77c67a833be91d6 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/_ext/621225903" 
-	@${RM} ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o.d 
-	@${RM} ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -DEVENTCHECKER_TEST -I"." -I"../../../../../../ECE118/include" -I"../../../../../../ECE118/templates" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o.d" -o ${OBJECTDIR}/_ext/621225903/TemplateEventChecker.o C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o.d 
+	@${RM} ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -DEVENTCHECKER_TEST -I"." -I"../../../../../../ECE118/include" -I"../../../../../../ECE118/templates" -Wall -MP -MMD -MF "${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o.d" -o ${OBJECTDIR}/_ext/621225903/RoachBasicCheck.o C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicCheck.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
@@ -316,6 +332,11 @@ ${DISTDIR}/Lab0_Part5.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbprojec
 	${MP_CC_DIR}\\xc32-bin2hex ${DISTDIR}/Lab0_Part5.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 
+.pre:
+	@echo "--------------------------------------"
+	@echo "User defined pre-build step: [python C:\ECE118\scripts\Enum_To_String.py]"
+	@python C:\ECE118\scripts\Enum_To_String.py
+	@echo "--------------------------------------"
 
 # Subprojects
 .build-subprojects:
