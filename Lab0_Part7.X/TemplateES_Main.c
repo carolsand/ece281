@@ -5,7 +5,6 @@
 #include "ES_Framework.h"
 #include "roach.h"
 
-
 void main(void)
 {
     ES_Return_t ErrorType;
@@ -18,6 +17,7 @@ void main(void)
 
     // Your hardware initialization function calls go here
     Roach_Init();
+    
     
     // now initialize the Events and Services Framework and start it running
     ErrorType = ES_Initialize();

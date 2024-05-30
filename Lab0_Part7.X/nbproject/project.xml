@@ -4,13 +4,17 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>Lab0_Part7</name>
-            <creation-uuid>ded9f023-0c91-4968-924d-c74c526a663f</creation-uuid>
+            <creation-uuid>ff88dd36-af4d-48e3-9e53-7aa811af1dd5</creation-uuid>
             <make-project-type>0</make-project-type>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
+            <asminc-extensions/>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
+                <sourceRootElem>C:\ece118_lab0\Lab0_Part7.X</sourceRootElem>
                 <sourceRootElem>C:\ECE118</sourceRootElem>
-                <sourceRootElem>C:\Users\crisvasquez\Desktop\ECE118_2024\ece118-2024\Lab0_Part7.X</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

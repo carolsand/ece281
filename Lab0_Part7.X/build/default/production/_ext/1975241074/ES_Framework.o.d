@@ -8,10 +8,10 @@ build/default/production/_ext/1975241074/ES_Framework.o: \
  c:\ece118\include\ES_LookupTables.h c:\ece118\include\ES_Port.h \
  c:\ece118\include\ES_PostList.h c:\ece118\include\ES_PriorTables.h \
  c:\ece118\include\ES_Queue.h c:\ece118\include\ES_ServiceHeaders.h \
- TemplateFSM.h ES_Configure.h c:\ece118\include\ES_TattleTale.h \
- c:\ece118\include\es_keyboardinput.h c:\ece118\include\es_events.h \
- c:\ece118\include\board.h c:\ece118\include\es_serviceheaders.h \
- c:\ece118\include\serial.h
+ TemplateFSM.h ES_Configure.h BattBumpService.h \
+ c:\ece118\include\ES_TattleTale.h c:\ece118\include\es_keyboardinput.h \
+ c:\ece118\include\es_events.h c:\ece118\include\board.h \
+ c:\ece118\include\es_serviceheaders.h c:\ece118\include\serial.h
 
 ES_Configure.h:
 
@@ -52,6 +52,8 @@ c:\ece118\include\ES_ServiceHeaders.h:
 TemplateFSM.h:
 
 ES_Configure.h:
+
+BattBumpService.h:
 
 c:\ece118\include\ES_TattleTale.h:
 

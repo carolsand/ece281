@@ -6,10 +6,10 @@ build/default/production/_ext/1975241074/ES_Timers.o: \
  c:\ece118\include\ES_LookupTables.h c:\ece118\include\ES_Port.h \
  c:\ece118\include\ES_PostList.h c:\ece118\include\ES_PriorTables.h \
  c:\ece118\include\ES_Queue.h c:\ece118\include\ES_ServiceHeaders.h \
- TemplateFSM.h ES_Configure.h c:\ece118\include\ES_TattleTale.h \
- c:\ece118\include\es_serviceheaders.h c:\ece118\include\es_events.h \
- c:\ece118\include\es_postlist.h c:\ece118\include\es_lookuptables.h \
- c:\ece118\include\es_timers.h
+ TemplateFSM.h ES_Configure.h BattBumpService.h \
+ c:\ece118\include\ES_TattleTale.h c:\ece118\include\es_serviceheaders.h \
+ c:\ece118\include\es_events.h c:\ece118\include\es_postlist.h \
+ c:\ece118\include\es_lookuptables.h c:\ece118\include\es_timers.h
 
 c:\ece118\include\board.h:
 
@@ -42,6 +42,8 @@ c:\ece118\include\ES_ServiceHeaders.h:
 TemplateFSM.h:
 
 ES_Configure.h:
+
+BattBumpService.h:
 
 c:\ece118\include\ES_TattleTale.h:
 
