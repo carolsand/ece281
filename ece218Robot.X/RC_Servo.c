@@ -163,7 +163,7 @@ void RC_ShutDown(void);
  * @brief Initialize the RC module for use. Uses TIMER4 hardware and initializes
  *        the interrupt to occur every 20msec (50Hz)
  * @note Returns FAILURE if called and the module was already enabled.
- * @author Gabriel Hugh Elkaim and cris, 2011.12.15 16:42 */
+ * @author Gabriel Hugh Elkaim and crisd, 2011.12.15 16:42 */
 char RC_Init(void)
 {
     char i;
@@ -179,7 +179,7 @@ char RC_Init(void)
     T4CON = 0; //start with nothing set in register
     T4CONbits.TCKPS = 0b101; // set prescaler to 1:32
     TMR4 = 0; // start the timer at 0
-    PR4 = F_PB / 32 / 50;// set period such that frequency is 50Hz for 9g micro servo
+    PR4 = F_PB / 32 / 50;// set period such that frequency is 50Hz for both servos
     
     // origirinal code of line 182 //SERVOCENTER*uSEC; //and sent its default period
     

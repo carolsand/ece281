@@ -9,7 +9,7 @@
 #include <BOARD.h>
 #include <xc.h>
 
-#include <RC_Servo.h>
+#include "RC_Servo.h"
 #include <pwm.h>
 #include <serial.h>
 #include <AD.h>
@@ -18,28 +18,47 @@
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
 
-#define LEFT_DIR                PORTV04_LAT
-#define LEFT_DIR_INV            PORTV05_LAT
-#define RIGHT_DIR               PORTY11_LAT
-#define RIGHT_DIR_INV           PORTY09_LAT
+/* PINS FOR THE MOTORS */
+#define LEFT_DIR                PORTZ10_LAT
+#define LEFT_DIR_INV            PORTZ11_LAT
+#define RIGHT_DIR               PORTZ12_LAT
+#define RIGHT_DIR_INV           PORTY11_LAT
 
-#define LEFT_DIR_TRIS           PORTV04_TRIS
-#define LEFT_DIR_INV_TRIS       PORTV05_TRIS
-#define RIGHT_DIR_TRIS          PORTY11_TRIS
-#define RIGHT_DIR_INV_TRIS      PORTY09_TRIS
+#define LEFT_DIR_TRIS           PORTZ10_TRIS
+#define LEFT_DIR_INV_TRIS       PORTZ11_TRIS
+#define RIGHT_DIR_TRIS          PORTZ12_TRIS
+#define RIGHT_DIR_INV_TRIS      PORTY11_TRIS
 
-#define BUMP_FRONT_LEFT         PORTV07_BIT
-#define BUMP_FRONT_RIGHT        PORTY08_BIT
-#define BUMP_REAR_RIGHT         PORTZ08_BIT
-#define BUMP_REAR_LEFT          PORTW04_BIT
-
-#define BUMP_FRONT_LEFT_TRIS    PORTV07_TRIS
-#define BUMP_FRONT_RIGHT_TRIS   PORTY08_TRIS
-#define BUMP_REAR_RIGHT_TRIS    PORTZ08_TRIS
-#define BUMP_REAR_LEFT_TRIS     PORTW04_TRIS
-
-#define LEFT_PWM                PWM_PORTY10
+#define LEFT_PWM                PWM_PORTZ06
 #define RIGHT_PWM               PWM_PORTY12
+
+/* PINS FOR THE BUMPERS (AKA LIMIT SWITCHES) */
+#define BUMP_FRONT_LEFT         PORTZ03_BIT
+#define BUMP_FRONT_RIGHT        PORTZ04_BIT
+#define BUMP_REAR_RIGHT         PORTZ05_BIT
+#define BUMP_REAR_LEFT          PORTZ07_BIT
+
+#define BUMP_FRONT_LEFT_TRIS    PORTZ03_TRIS
+#define BUMP_FRONT_RIGHT_TRIS   PORTZ04_TRIS
+#define BUMP_REAR_RIGHT_TRIS    PORTZ05_TRIS
+#define BUMP_REAR_LEFT_TRIS     PORTZ07_TRIS
+
+/* PINS FOR SERVOS */
+#define DOOR_SERVO              RC_PORTX03
+#define SCOOP_SERVO             RC_PORTX04
+
+/* PINS FOR DETECTORS */
+#define BEACON_DETECTOR         PORTZ08_BIT
+#define TRACK_WIRE_DETECTOR     PORTZ09_BIT
+
+#define BEACON_DETECTOR_TRIS    PORTZ08_TRIS
+#define TRACK_WIRE_DETECT_TRIS  PORTZ09_BIT
+
+/* PINS FOR TAPE SENSORS */
+#define TAPE_SENSOR_FRONT_LEFT  AD_PORTV3
+#define TAPE_SENSOR_FRONT_RIGHT AD_PORTV4
+#define TAPE_SENSOR_REAR_RIGHT  AD_PORTV5
+#define TAPE_SENSOR_REAR_LEFT   AD_PORTV6
 
 #define LIGHT_SENSOR 100 // ???
 #define ROBOT_BAT_VOLTAGE BAT_VOLTAGE
@@ -130,6 +149,13 @@ void Robot_Init(void)
     RIGHT_DIR_INV = ~RIGHT_DIR;
 
   
+    // set up servos
+    RC_Init();
+    
+    // set up tape sensors 
+    
+    AD_Init();
+    
     //set up the light bank
 
     uint8_t CurPin;
