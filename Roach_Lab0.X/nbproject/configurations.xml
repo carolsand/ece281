@@ -24,17 +24,17 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>//Mac/Home/Documents/ECE218 - Mechatronics/Roach_Lab0.X/main_roach.c</itemPath>
       <itemPath>C:/ECE118/src/AD.c</itemPath>
       <itemPath>C:/ECE118/src/BOARD.c</itemPath>
       <itemPath>C:/ECE118/src/roach.c</itemPath>
       <itemPath>C:/ECE118/src/serial.c</itemPath>
       <itemPath>C:/ECE118/src/pwm.c</itemPath>
-      <itemPath>//Mac/Home/Documents/ECE218 - Mechatronics/Roach_Lab0.X/test_roach.c</itemPath>
+      <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Roach_Lab0.X/test_roach.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
     <Elem>C:\ECE118</Elem>
+    <Elem>C:\Users\crisvasquez\Desktop\ECE118_2024\ece118-2024\Roach_Lab0.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -79,10 +79,6 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
-      <item path="//Mac/Home/Documents/ECE218 - Mechatronics/Roach_Lab0.X/main_roach.c"
-            ex="true"
-            overriding="false">
-      </item>
       <C32>
         <property key="additional-warnings" value="true"/>
         <property key="addresss-attribute-use" value="false"/>

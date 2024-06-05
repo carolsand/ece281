@@ -9,12 +9,12 @@ void main(void)
     ES_Return_t ErrorType;
 
     BOARD_Init();
-
     printf("Starting ES Framework Template\r\n");
     printf("using the 2nd Generation Events & Services Framework\r\n");
 
 
     // Your hardware initialization function calls go here
+    Roach_Init();
 
     // now initialize the Events and Services Framework and start it running
     ErrorType = ES_Initialize();

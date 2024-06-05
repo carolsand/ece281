@@ -37,7 +37,8 @@
  * MODULE #DEFINES                                                             *
  ******************************************************************************/
 #define BATTERY_DISCONNECT_THRESHOLD 175
-#define LIGHT_THRESHOLD 500
+#define DARK_THRESHOLD 900
+#define LIGHT_THRESHOLD 300
 
 
 /*******************************************************************************
@@ -51,9 +52,10 @@
 
 static const char *eventName;
 static ES_Event storedEvent;
-static ES_EventTyp_t lastLightState;
-static ES_EventTyp_t lastBumperState;
-static uint16_t lastBumperValue;
+static ES_EventTyp_t lastLightState = DARK;
+static ES_EventTyp_t lastBumperState = NOT_PUSHED;
+static uint16_t lastBumperValue = 0;
+
 
 //static enum lastLightState;
 
@@ -125,7 +127,7 @@ uint8_t CheckLightLevel(void) {
     // check the light level and assign LIGHT or DARK
     currentLightValue = Roach_LightLevel();
 
-    if (currentLightValue > LIGHT_THRESHOLD) {
+    if (currentLightValue > DARK_THRESHOLD) {
         currentLightState = DARK;
     }
     if (currentLightValue < LIGHT_THRESHOLD) {

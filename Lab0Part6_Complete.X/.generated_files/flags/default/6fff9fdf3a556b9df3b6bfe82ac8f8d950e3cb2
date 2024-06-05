@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -DSIMPLESERVICE_TEST -I"." -I"C:/ECE118/include"   -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0Part6_Complete.X/Part6_ES_Main.c

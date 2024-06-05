@@ -28,6 +28,8 @@
       <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/ES_Configure.h</itemPath>
       <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.h</itemPath>
       <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicChecker.h</itemPath>
+      <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TimerBumpService.h</itemPath>
+      <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/LightService.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -60,6 +62,9 @@
       <itemPath>C:/ECE118/src/timers.c</itemPath>
       <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.c</itemPath>
       <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicCheck.c</itemPath>
+      <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TimerBumpService.c</itemPath>
+      <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateES_Main.c</itemPath>
+      <itemPath>C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/LightService.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -127,7 +132,7 @@
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
-        <property key="preprocessor-macros" value="EVENTCHECKER_TEST"/>
+        <property key="preprocessor-macros" value=""/>
         <property key="strict-ansi" value="false"/>
         <property key="support-ansi" value="false"/>
         <property key="tentative-definitions" value="-fno-common"/>
@@ -184,7 +189,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value=""/>
+        <property key="heap-size" value="10"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
@@ -246,13 +251,77 @@
         <property key="stack-smashing" value=""/>
         <property key="wpo-lto" value="false"/>
       </C32Global>
+      <item path="C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicCheck.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/RoachBasicChecker.h"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
       <item path="C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.c"
             ex="true"
             overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="C:/Users/crisvasquez/Desktop/ECE118_2024/ece118-2024/Lab0_Part5.X/TemplateEventChecker.h"
             ex="true"
             overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
     </conf>
   </confs>
