@@ -18,6 +18,12 @@
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
 
+#define OUTPUT 0
+#define INPUT  1
+
+#define LOW    0
+#define HIGH   1
+
 /* PINS FOR THE MOTORS */
 #define LEFT_DIR                PORTZ10_LAT
 #define LEFT_DIR_INV            PORTZ11_LAT
@@ -133,46 +139,45 @@ static unsigned short int LED_bitsMap[] = {BIT_7, BIT_5, BIT_10, BIT_11, BIT_3, 
  * @author Max Dunne, 2012.01.06 */
 void Robot_Init(void)
 {
-
+    // set up beacon detector and track wire detector as inputs 
+    BEACON_DETECTOR_TRIS   = INPUT;
+    TRACK_WIRE_DETECT_TRIS = INPUT;
+    
+    // also set up bumpers (limit switches) as inputs
+    BUMP_FRONT_LEFT_TRIS   = INPUT;
+    BUMP_FRONT_RIGHT_TRIS  = INPUT;
+    BUMP_REAR_LEFT_TRIS    = INPUT;
+    BUMP_REAR_RIGHT_TRIS   = INPUT;
+    
     //set the control pins for the motors
     PWM_Init();
     PWM_SetFrequency(1000);
     PWM_AddPins(LEFT_PWM | RIGHT_PWM);
 
-    LEFT_DIR_TRIS = 0;
-    LEFT_DIR_INV_TRIS = 0;
-    RIGHT_DIR_TRIS = 0;
-    RIGHT_DIR_INV_TRIS = 0;
-    LEFT_DIR = 0;
+    LEFT_DIR_TRIS = OUTPUT;
+    LEFT_DIR_INV_TRIS = OUTPUT;
+    RIGHT_DIR_TRIS = OUTPUT;
+    RIGHT_DIR_INV_TRIS = OUTPUT;
+    LEFT_DIR = LOW;
     LEFT_DIR_INV = ~LEFT_DIR;
-    RIGHT_DIR = 0;
+    RIGHT_DIR = LOW;
     RIGHT_DIR_INV = ~RIGHT_DIR;
 
   
     // set up servos
     RC_Init();
+    RC_AddPins(DOOR_SERVO | SCOOP_SERVO);
+    
+    RC_SetPulseTime(DOOR_SERVO, 2000);
+    RC_SetPulseTime(SCOOP_SERVO, 2000);
     
     // set up tape sensors 
     
     AD_Init();
+    AD_AddPins(TAPE_SENSOR_FRONT_LEFT | TAPE_SENSOR_FRONT_RIGHT 
+              | TAPE_SENSOR_REAR_LEFT | TAPE_SENSOR_REAR_RIGHT);
     
-    //set up the light bank
-
-    uint8_t CurPin;
-    for (CurPin = 0; CurPin < NUMLEDS; CurPin++) {
-        LED_SetPinOutput(CurPin);
-        LED_Off(CurPin);
-    }
-    //while (1);
-
-    //Initialize the light sensor
-    AD_Init();
-    //    printf("Current pins: %d\n",AD_ActivePins());
-    //    printf("Add Result: %d\n",AD_AddPins(LIGHT_SENSOR));
-    //    while(1);
-    AD_AddPins(LIGHT_SENSOR);
-
-    //enable interrupts
+    
 }
 
 /**
