@@ -27,6 +27,9 @@
 #define BUMPER_TRIPPED 1
 #define BUMPER_NOT_TRIPPED 0
 
+#define TAPE_PRESENT 1
+#define TAPE_NOT_PRESENT 0
+
 #define ROBOT_MAX_SPEED 100 
 
 /**
@@ -62,14 +65,6 @@ char Robot_LeftMtrSpeed(char newSpeed);
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Dyamic Duo, 2024.05.25*/
 char Robot_RightMtrSpeed(char newSpeed);
-
-/**
- * @Function Robot_LightLevel(void)
- * @param None.
- * @return a 10-bit value corresponding to the amount of light received.
- * @brief  Returns the current light level. A higher value means less light is detected.
- * @author Dyamic Duo, 2024.05.25*/
-unsigned int Robot_LightLevel(void);
 
 /**
  * @Function Robot_BatteryVoltage(void)
@@ -144,6 +139,56 @@ uint16_t Robot_LEDSGet(void);
  * @author  Dyamic Duo 2015.09.18 */
 char Robot_BarGraph(uint8_t Number);
 
+
+/**
+ * @Function Robot_ReadFrontLeftTape(void)
+ * @param None.
+ * @return 10-bit value representing the light level detected by the left-front tape sensor
+ * @brief  Returns ADC value from left-front tape sensor
+ * @author */
+unsigned char Robot_ReadFrontLeftTape(void);
+
+/**
+ * @Function Robot_ReadFrontRightTape(void)
+ * @param None.
+ * @return 10-bit value representing the light level detected by the right-front tape sensor
+ * @brief  Returns ADC value from right-front tape sensor
+ * @author */
+unsigned char Robot_ReadFrontRightTape(void);
+
+/**
+ * @Function Robot_ReadRearLeftTape(void)
+ * @param None.
+ * @return 10-bit value representing the light level detected by the rear-left tape sensor
+ * @brief  Returns ADC value from left-rear tape sensor
+ * @author */
+unsigned char Robot_ReadRearLeftTape(void);
+
+/**
+ * @Function Robot_ReadRearRightTape(void)
+ * @param None.
+ * @return 10-bit value representing the light level detected by the rear-right tape sensor
+ * @brief  Returns ADC value from right-rear tape sensor
+ * @author */
+unsigned char Robot_ReadRearRightTape(void);
+
+/**
+ * @Function Robot_SetScoopServo(int position)
+ * @param position
+ * @return SUCCESS or ERROR
+ * @brief This function is used to set the position of the servo
+ * @author
+ */
+unsigned char Robot_SetScoopServo(int newPosition);
+
+/**
+ * @Function Robot_SetDoorServo(int position)
+ * @param position
+ * @return SUCCESS or ERROR
+ * @brief This function is used to set the position of the servo
+ * @author
+ */
+unsigned char Robot_SetDoorServo(int newPosition);
 
 #endif
 
