@@ -161,9 +161,9 @@ void RC_ShutDown(void);
  * @param none
  * @return SUCCESS or ERROR
  * @brief Initialize the RC module for use. Uses TIMER4 hardware and initializes
- *        the interrupt to occur every 20msec (50Hz)
+ *        the interrupt to occur every 50msec (20Hz)
  * @note Returns FAILURE if called and the module was already enabled.
- * @author Gabriel Hugh Elkaim and crisd, 2011.12.15 16:42 */
+ * @author Gabriel Hugh Elkaim, 2011.12.15 16:42 */
 char RC_Init(void)
 {
     char i;
@@ -177,12 +177,9 @@ char RC_Init(void)
     }
 
     T4CON = 0; //start with nothing set in register
-    T4CONbits.TCKPS = 0b101; // set prescaler to 1:32
+    T4CONbits.TCKPS = 0b001; // set prescaler to 1:2
     TMR4 = 0; // start the timer at 0
-    PR4 = F_PB / 32 / 50;// set period such that frequency is 50Hz for both servos
-    
-    // origirinal code of line 182 //SERVOCENTER*uSEC; //and sent its default period
-    
+    PR4 = SERVOCENTER*uSEC; //and sent its default period
     T4CONbits.ON = 1; //turn timer on
 
     IFS0bits.T4IF = 0; // clear remnant flag
@@ -284,11 +281,11 @@ unsigned short int RC_ListPins(void)
 char RC_SetPulseTime(unsigned short int RCpin, unsigned short int pulseTime)
 {
     char i;
-    if ((pulseTime < MINPULSE) || (pulseTime > MAXPULSE)) {
-        // error state, input out of range
-        dbprintf("\nRC_Servo: Set Pulse FAILED, pulse time out of range");
-        return ERROR;
-    }
+//    if ((pulseTime < MINPULSE) || (pulseTime > MAXPULSE)) {
+//        // error state, input out of range
+//        dbprintf("\nRC_Servo: Set Pulse FAILED, pulse time out of range");
+//        return ERROR;
+    //}
     if ((RCpin == 0x000) || (RCpin > ALLRCPINS) || (!RCenabled)) {
         // error state, either module or pins not active, or out of range
         dbprintf("\nRC_Servo: Set Pulse FAILED, out of bounds or module inactive");

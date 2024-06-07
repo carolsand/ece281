@@ -8,7 +8,7 @@
 #include <Robot.h>
 #include <BOARD.h>
 #include <xc.h>
-
+#include <stdio.h>
 #include "RC_Servo.h"
 #include <pwm.h>
 #include <serial.h>
@@ -28,12 +28,12 @@
 #define LEFT_DIR                PORTZ10_LAT
 #define LEFT_DIR_INV            PORTZ11_LAT
 #define RIGHT_DIR               PORTZ12_LAT
-#define RIGHT_DIR_INV           PORTY11_LAT
+#define RIGHT_DIR_INV           PORTY12_LAT
 
 #define LEFT_DIR_TRIS           PORTZ10_TRIS
 #define LEFT_DIR_INV_TRIS       PORTZ11_TRIS
 #define RIGHT_DIR_TRIS          PORTZ12_TRIS
-#define RIGHT_DIR_INV_TRIS      PORTY11_TRIS
+#define RIGHT_DIR_INV_TRIS      PORTY12_TRIS
 
 #define LEFT_PWM                PWM_PORTZ06
 #define RIGHT_PWM               PWM_PORTY12
@@ -137,18 +137,17 @@ static unsigned short int LED_bitsMap[] = {BIT_7, BIT_5, BIT_10, BIT_11, BIT_3, 
  * setting the initial motor directions.
  * @note  None.
  * @author Max Dunne, 2012.01.06 */
-void Robot_Init(void)
-{
+void Robot_Init(void) {
     // set up beacon detector and track wire detector as inputs 
-    BEACON_DETECTOR_TRIS   = INPUT;
+    BEACON_DETECTOR_TRIS = INPUT;
     TRACK_WIRE_DETECT_TRIS = INPUT;
-    
+
     // also set up bumpers (limit switches) as inputs
-    BUMP_FRONT_LEFT_TRIS   = INPUT;
-    BUMP_FRONT_RIGHT_TRIS  = INPUT;
-    BUMP_REAR_LEFT_TRIS    = INPUT;
-    BUMP_REAR_RIGHT_TRIS   = INPUT;
-    
+    BUMP_FRONT_LEFT_TRIS = INPUT;
+    BUMP_FRONT_RIGHT_TRIS = INPUT;
+    BUMP_REAR_LEFT_TRIS = INPUT;
+    BUMP_REAR_RIGHT_TRIS = INPUT;
+
     //set the control pins for the motors
     PWM_Init();
     PWM_SetFrequency(1000);
@@ -158,26 +157,28 @@ void Robot_Init(void)
     LEFT_DIR_INV_TRIS = OUTPUT;
     RIGHT_DIR_TRIS = OUTPUT;
     RIGHT_DIR_INV_TRIS = OUTPUT;
+
     LEFT_DIR = LOW;
-    LEFT_DIR_INV = ~LEFT_DIR;
+    LEFT_DIR_INV = HIGH;
     RIGHT_DIR = LOW;
     RIGHT_DIR_INV = ~RIGHT_DIR;
 
-  
+
     // set up servos
     RC_Init();
     RC_AddPins(DOOR_SERVO | SCOOP_SERVO);
-    
+
+
     RC_SetPulseTime(DOOR_SERVO, 2000);
-    RC_SetPulseTime(SCOOP_SERVO, 2000);
-    
+    RC_SetPulseTime(SCOOP_SERVO, 1200);
+
     // set up tape sensors 
-    
+
     AD_Init();
-    AD_AddPins(TAPE_SENSOR_FRONT_LEFT | TAPE_SENSOR_FRONT_RIGHT 
-              | TAPE_SENSOR_REAR_LEFT | TAPE_SENSOR_REAR_RIGHT);
-    
-    
+    AD_AddPins(TAPE_SENSOR_FRONT_LEFT | TAPE_SENSOR_FRONT_RIGHT
+            | TAPE_SENSOR_REAR_LEFT | TAPE_SENSOR_REAR_RIGHT);
+
+
 }
 
 /**
@@ -187,13 +188,12 @@ void Robot_Init(void)
  * @return SUCCESS or ERROR
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Max Dunne, 2012.01.06 */
-char Robot_LeftMtrSpeed(char newSpeed)
-{
+char Robot_LeftMtrSpeed(char newSpeed) {
     if ((newSpeed < -ROBOT_MAX_SPEED) || (newSpeed > ROBOT_MAX_SPEED)) {
         return (ERROR);
     }
     newSpeed = -newSpeed;
-  
+
     if (newSpeed < 0) {
         LEFT_DIR = 0;
         newSpeed = newSpeed * (-1); // set speed to a positive value
@@ -215,8 +215,7 @@ char Robot_LeftMtrSpeed(char newSpeed)
  * @return SUCCESS or ERROR
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Max Dunne, 2012.01.06 */
-char Robot_RightMtrSpeed(char newSpeed)
-{
+char Robot_RightMtrSpeed(char newSpeed) {
     if ((newSpeed < -ROBOT_MAX_SPEED) || (newSpeed > ROBOT_MAX_SPEED)) {
         return (ERROR);
     }
@@ -240,8 +239,7 @@ char Robot_RightMtrSpeed(char newSpeed)
  * @return a 10-bit value corresponding to the amount of light received.
  * @brief  Returns the current light level. A higher value means less light is detected.
  * @author Max Dunne, 2012.01.06 */
-unsigned int Robot_LightLevel(void)
-{
+unsigned int Robot_LightLevel(void) {
     return AD_ReadADPin(LIGHT_SENSOR);
 }
 
@@ -251,8 +249,7 @@ unsigned int Robot_LightLevel(void)
  * @return a 10-bit value corresponding to the current voltage of the roach
  * @brief  returns a 10:1 scaled value of the roach battery level
  * @author Max Dunne, 2013.07.12 */
-unsigned int Robot_BatteryVoltage(void)
-{
+unsigned int Robot_BatteryVoltage(void) {
     return AD_ReadADPin(ROBOT_BAT_VOLTAGE);
 }
 
@@ -262,8 +259,7 @@ unsigned int Robot_BatteryVoltage(void)
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the front left bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Robot_ReadFrontLeftBumper(void)
-{
+unsigned char Robot_ReadFrontLeftBumper(void) {
     return !BUMP_FRONT_LEFT;
 }
 
@@ -273,8 +269,7 @@ unsigned char Robot_ReadFrontLeftBumper(void)
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the front right bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Robot_ReadFrontRightBumper(void)
-{
+unsigned char Robot_ReadFrontRightBumper(void) {
     return !BUMP_FRONT_RIGHT;
 }
 
@@ -284,8 +279,7 @@ unsigned char Robot_ReadFrontRightBumper(void)
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the rear left bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Robot_ReadRearLeftBumper(void)
-{
+unsigned char Robot_ReadRearLeftBumper(void) {
     return !BUMP_REAR_LEFT;
 }
 
@@ -295,8 +289,7 @@ unsigned char Robot_ReadRearLeftBumper(void)
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the rear right bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Robot_ReadRearRightBumper(void)
-{
+unsigned char Robot_ReadRearRightBumper(void) {
     return !BUMP_REAR_RIGHT;
 }
 
@@ -306,8 +299,7 @@ unsigned char Robot_ReadRearRightBumper(void)
  * @return 4-bit value representing all four bumpers in following order: front left,front right, rear left, rear right
  * @brief  Returns the state of all 4 bumpers
  * @author Max Dunne, 2012.01.06 */
-unsigned char Robot_ReadBumpers(void)
-{
+unsigned char Robot_ReadBumpers(void) {
     //unsigned char bump_state;
     //bump_state = (!BUMP_FRONT_LEFT + ((!BUMP_FRONT_RIGHT) << 1)+((!BUMP_REAR_LEFT) << 2)+((!BUMP_REAR_RIGHT) << 3));
     return (!BUMP_FRONT_LEFT + ((!BUMP_FRONT_RIGHT) << 1)+((!BUMP_REAR_LEFT) << 2)+((!BUMP_REAR_RIGHT) << 3));
@@ -319,8 +311,7 @@ unsigned char Robot_ReadBumpers(void)
  * @return SUCCESS or ERROR
  * @brief  Forces the LEDs in (bank) to on (1) or off (0) to match the pattern.
  * @author Gabriel Hugh Elkaim, 2011.12.25 01:16 Max Dunne 2015.09.18 */
-char Robot_LEDSSet(uint16_t pattern)
-{
+char Robot_LEDSSet(uint16_t pattern) {
     char i;
     for (i = 0; i < NUMLEDS; i++) {
         if (pattern & (1 << i)) {
@@ -336,8 +327,7 @@ char Robot_LEDSSet(uint16_t pattern)
  * @Function Robot_LEDSGet(void)
  * @return uint16_t: ERROR or state of BANK
  * @author Max Dunne, 203.10.21 01:16 2015.09.18 */
-uint16_t Robot_LEDSGet(void)
-{
+uint16_t Robot_LEDSGet(void) {
     uint16_t LEDStatus = 0;
     int8_t i;
     for (i = (NUMLEDS - 1); i >= 0; i--) {
@@ -358,8 +348,7 @@ uint16_t Robot_LEDSGet(void)
  * @author  Max Dunne 2015.09.18 */
 
 
-char Robot_BarGraph(uint8_t Number)
-{
+char Robot_BarGraph(uint8_t Number) {
     if (Number > NUMLEDS) {
         return ERROR;
     }
@@ -374,8 +363,55 @@ char Robot_BarGraph(uint8_t Number)
     return SUCCESS;
 }
 
-//#define ROBOT_TEST
+#define ROBOT_TEST
+
+
 #ifdef ROBOT_TEST
+
+void main(void) {
+    BOARD_Init();
+    SERIAL_Init();
+    Robot_Init();
+    static char i = 0;
+    static unsigned int servoPulse = 2000;
+    static unsigned int doorPulse = 1500;
+
+    while (1) {
+        PWM_SetDutyCycle(LEFT_PWM, 1000);
+        PWM_SetDutyCycle(RIGHT_PWM, 1000);
+        i = GetChar();
+        if (i == 'u') {
+            servoPulse = servoPulse + 40;
+            RC_SetPulseTime(SCOOP_SERVO, servoPulse);
+            printf("servo value: %d \r\n\r\n", servoPulse);
+        }
+
+        if (i == 'd') {
+            servoPulse = servoPulse - 40;
+            RC_SetPulseTime(SCOOP_SERVO, servoPulse);
+            printf("servo value: %d \r\n\r\n", servoPulse);
+        }
+        if (i == 'l') {
+            doorPulse = 1080;
+            RC_SetPulseTime(DOOR_SERVO, doorPulse);
+            printf("servo value: %d \r\n\r\n", doorPulse);
+        }
+
+        if (i == 'r') {
+            doorPulse = 1850;
+            RC_SetPulseTime(DOOR_SERVO, doorPulse);
+            printf("servo value: %d \r\n\r\n", doorPulse);
+        }
+
+    }
+
+
+}
+
+
+#endif
+
+#ifdef ROACH_TEST
 #pragma config FPLLIDIV 	= DIV_2		//PLL Input Divider
 #pragma config FPLLMUL 		= MUL_20	//PLL Multiplier
 #pragma config FPLLODIV 	= DIV_1 	//System PLL Output Clock Divid
@@ -420,8 +456,7 @@ char Robot_BarGraph(uint8_t Number)
 
 void FlashLEDBar(uint8_t numtimes);
 
-int main(void)
-{
+int main(void) {
     BOARD_Init();
     Robot_Init();
 
@@ -456,152 +491,152 @@ int main(void)
         // wait for bumper press
         switch (Robot_ReadBumpers()) {
 
-        case FLEFT_BUMP_MASK: // Battery Voltage live output
-            FlashLEDBar(1);
-            DELAY(A_LOT);
-            scaledValue = Robot_BatteryVoltage();
-            printf("\r\nBattery voltage is %d", scaledValue);
-            scaledValue -= LOW_BAT;
-            scaledValue *= 12;
-            scaledValue /= (HIGH_BAT - LOW_BAT);
-            Robot_BarGraph(scaledValue);
-            DELAY(A_LOT << 2);
-            Robot_LEDSSet(0);
-            printf("\r\nBattery Level Test Complete");
-            DELAY(A_BIT);
-            FlashLEDBar(1);
-            break;
-
-        case FRIGHT_BUMP_MASK: // Light Sensor live output
-            FlashLEDBar(2);
-            DELAY(A_LOT);
-            for (i = 0; i < A_LOT >> 2; i++) {
-                scaledValue = Robot_LightLevel();
-                if (i % 10000 == 0) {
-                    printf("\r\nCurrent Light Level: %d", scaledValue);
-                }
+            case FLEFT_BUMP_MASK: // Battery Voltage live output
+                FlashLEDBar(1);
+                DELAY(A_LOT);
+                scaledValue = Robot_BatteryVoltage();
+                printf("\r\nBattery voltage is %d", scaledValue);
+                scaledValue -= LOW_BAT;
                 scaledValue *= 12;
-                scaledValue /= 1023;
+                scaledValue /= (HIGH_BAT - LOW_BAT);
                 Robot_BarGraph(scaledValue);
-            }
-            printf("\r\nLight Level Test Complete");
-            DELAY(A_LOT);
-            FlashLEDBar(2);
-            break;
+                DELAY(A_LOT << 2);
+                Robot_LEDSSet(0);
+                printf("\r\nBattery Level Test Complete");
+                DELAY(A_BIT);
+                FlashLEDBar(1);
+                break;
 
-        case RLEFT_BUMP_MASK: // Left motor progression
-            FlashLEDBar(3);
-            motorSpeed = 100;
-            DELAY(A_LOT);
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b111100000000);
-            DELAY(MOTOR_TIME);
-            motorSpeed -= 20;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b011100000000);
-            DELAY(MOTOR_TIME);
-            motorSpeed -= 20;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b001100000000);
-            DELAY(MOTOR_TIME);
-            motorSpeed -= 20;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b000100000000);
-            DELAY(MOTOR_TIME);
-            motorSpeed = 0;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0);
-            DELAY(MOTOR_TIME);
-            motorSpeed = -100;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b1111);
-            DELAY(MOTOR_TIME);
-            motorSpeed += 20;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b0111);
-            DELAY(MOTOR_TIME);
-            motorSpeed += 20;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b0011);
-            DELAY(MOTOR_TIME);
-            motorSpeed += 20;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b0001);
-            DELAY(MOTOR_TIME);
-            motorSpeed = 0;
-            printf("\r\nLeft Motor at %d", motorSpeed);
-            Robot_LeftMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0);
-            DELAY(A_LOT);
-            printf("\r\nLeft Motor Test Complete");
-            FlashLEDBar(3);
-            break;
+            case FRIGHT_BUMP_MASK: // Light Sensor live output
+                FlashLEDBar(2);
+                DELAY(A_LOT);
+                for (i = 0; i < A_LOT >> 2; i++) {
+                    scaledValue = Robot_LightLevel();
+                    if (i % 10000 == 0) {
+                        printf("\r\nCurrent Light Level: %d", scaledValue);
+                    }
+                    scaledValue *= 12;
+                    scaledValue /= 1023;
+                    Robot_BarGraph(scaledValue);
+                }
+                printf("\r\nLight Level Test Complete");
+                DELAY(A_LOT);
+                FlashLEDBar(2);
+                break;
 
-        case RRIGHT_BUMP_MASK:
-            FlashLEDBar(4);
-            DELAY(A_LOT);
-            motorSpeed = 100;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b111100000000);
-            DELAY(MOTOR_TIME);
-            motorSpeed -= 20;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b011100000000);
-            DELAY(MOTOR_TIME);
-            motorSpeed -= 20;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b001100000000);
-            DELAY(MOTOR_TIME);
-            motorSpeed -= 20;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b000100000000);
-            DELAY(MOTOR_TIME);
-            motorSpeed = 0;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0);
-            DELAY(MOTOR_TIME);
-            motorSpeed = -100;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(-100);
-            Robot_LEDSSet(0b1111);
-            DELAY(MOTOR_TIME);
-            motorSpeed += 20;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b0111);
-            DELAY(MOTOR_TIME);
-            motorSpeed += 20;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b0011);
-            DELAY(MOTOR_TIME);
-            motorSpeed += 20;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0b0001);
-            DELAY(MOTOR_TIME);
-            motorSpeed = 0;
-            printf("\r\nRight Motor at %d", motorSpeed);
-            Robot_RightMtrSpeed(motorSpeed);
-            Robot_LEDSSet(0);
-            DELAY(A_LOT);
-            printf("\r\nRight Motor Test Complete");
-            FlashLEDBar(4);
-            break;
+            case RLEFT_BUMP_MASK: // Left motor progression
+                FlashLEDBar(3);
+                motorSpeed = 100;
+                DELAY(A_LOT);
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b111100000000);
+                DELAY(MOTOR_TIME);
+                motorSpeed -= 20;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b011100000000);
+                DELAY(MOTOR_TIME);
+                motorSpeed -= 20;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b001100000000);
+                DELAY(MOTOR_TIME);
+                motorSpeed -= 20;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b000100000000);
+                DELAY(MOTOR_TIME);
+                motorSpeed = 0;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0);
+                DELAY(MOTOR_TIME);
+                motorSpeed = -100;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b1111);
+                DELAY(MOTOR_TIME);
+                motorSpeed += 20;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b0111);
+                DELAY(MOTOR_TIME);
+                motorSpeed += 20;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b0011);
+                DELAY(MOTOR_TIME);
+                motorSpeed += 20;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b0001);
+                DELAY(MOTOR_TIME);
+                motorSpeed = 0;
+                printf("\r\nLeft Motor at %d", motorSpeed);
+                Robot_LeftMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0);
+                DELAY(A_LOT);
+                printf("\r\nLeft Motor Test Complete");
+                FlashLEDBar(3);
+                break;
+
+            case RRIGHT_BUMP_MASK:
+                FlashLEDBar(4);
+                DELAY(A_LOT);
+                motorSpeed = 100;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b111100000000);
+                DELAY(MOTOR_TIME);
+                motorSpeed -= 20;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b011100000000);
+                DELAY(MOTOR_TIME);
+                motorSpeed -= 20;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b001100000000);
+                DELAY(MOTOR_TIME);
+                motorSpeed -= 20;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b000100000000);
+                DELAY(MOTOR_TIME);
+                motorSpeed = 0;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0);
+                DELAY(MOTOR_TIME);
+                motorSpeed = -100;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(-100);
+                Robot_LEDSSet(0b1111);
+                DELAY(MOTOR_TIME);
+                motorSpeed += 20;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b0111);
+                DELAY(MOTOR_TIME);
+                motorSpeed += 20;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b0011);
+                DELAY(MOTOR_TIME);
+                motorSpeed += 20;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0b0001);
+                DELAY(MOTOR_TIME);
+                motorSpeed = 0;
+                printf("\r\nRight Motor at %d", motorSpeed);
+                Robot_RightMtrSpeed(motorSpeed);
+                Robot_LEDSSet(0);
+                DELAY(A_LOT);
+                printf("\r\nRight Motor Test Complete");
+                FlashLEDBar(4);
+                break;
         }
         // Left motor progression
         // right motor progression
@@ -611,8 +646,7 @@ int main(void)
     while (1);
 }
 
-void FlashLEDBar(uint8_t numtimes)
-{
+void FlashLEDBar(uint8_t numtimes) {
     unsigned int wait, i;
     Robot_LEDSSet(0);
     for (i = 0; i < numtimes; i++) {

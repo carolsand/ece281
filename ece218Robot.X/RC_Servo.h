@@ -37,7 +37,7 @@
  ******************************************************************************/
 
 #define MINPULSE 500
-#define MAXPULSE 2500
+#define MAXPULSE 2000
 
 #define RC_PORTX03 0x001
 #define RC_PORTX04 0x002
