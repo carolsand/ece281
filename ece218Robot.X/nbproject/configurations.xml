@@ -115,6 +115,8 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <item path="../ece218Robot.X/FinalES_Main.c" ex="true" overriding="false">
+      </item>
       <C32>
         <property key="additional-warnings" value="false"/>
         <property key="addresss-attribute-use" value="false"/>
@@ -251,6 +253,47 @@
         <property key="stack-smashing" value=""/>
         <property key="wpo-lto" value="false"/>
       </C32Global>
+    </conf>
+    <conf name="ROBOT_TEST" type="2">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <targetDevice></targetDevice>
+        <targetHeader></targetHeader>
+        <targetPluginBoard></targetPluginBoard>
+        <platformTool></platformTool>
+        <languageToolchain></languageToolchain>
+        <languageToolchainVersion></languageToolchainVersion>
+        <platform>3</platform>
+      </toolsSet>
+      <packs>
+      </packs>
+      <ScriptingSettings>
+      </ScriptingSettings>
+      <compileType>
+        <linkerTool>
+          <linkerLibItems>
+          </linkerLibItems>
+        </linkerTool>
+        <archiverTool>
+        </archiverTool>
+        <loading>
+          <useAlternateLoadableFile>false</useAlternateLoadableFile>
+          <parseOnProdLoad>false</parseOnProdLoad>
+          <alternateLoadableFile></alternateLoadableFile>
+        </loading>
+        <subordinates>
+        </subordinates>
+      </compileType>
+      <makeCustomizationType>
+        <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
+        <makeUseCleanTarget>false</makeUseCleanTarget>
+        <makeCustomizationPreStep></makeCustomizationPreStep>
+        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep></makeCustomizationPostStep>
+        <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
+        <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
+        <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
+      </makeCustomizationType>
     </conf>
   </confs>
 </configurationDescriptor>
