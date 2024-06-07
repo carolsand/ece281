@@ -25,6 +25,10 @@
                     <name>ROBOT_TEST</name>
                     <type>2</type>
                 </confElem>
+                <confElem>
+                    <name>MAIN</name>
+                    <type>2</type>
+                </confElem>
             </confList>
             <formatting>
                 <project-formatting-style>false</project-formatting-style>

@@ -466,7 +466,6 @@ unsigned char Robot_SetDoorServo(int newPosition){
 }
 
 
-#define ROBOT_TEST
 
 
 #ifdef ROBOT_TEST
@@ -495,14 +494,14 @@ void main(void) {
             printf("scoop servo value: %d \r\n\r\n", servoPulse);
         }
         if (i == 'l') {
-            doorPulse = 1000;//doorPulse + 50;
-            Robot_SetDoorServo(servoPulse);
+            doorPulse = 1050;//doorPulse + 50;
+            Robot_SetDoorServo(doorPulse);
             printf("door servo value: %d \r\n\r\n", doorPulse);
         }
 
         if (i == 'r') {
-            doorPulse = 2000;//doorPulse - 50;
-            Robot_SetDoorServo(servoPulse);
+            doorPulse = 1800;//doorPulse - 50;
+            Robot_SetDoorServo(doorPulse);
             printf("door servo value: %d \r\n\r\n", doorPulse);
         }
 
