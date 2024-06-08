@@ -50,7 +50,7 @@
       <itemPath>C:/ECE118/Lab0_Part7.X/BattBumpService.c</itemPath>
       <itemPath>C:/ECE118/Lab0_Part7.X/LightEventChecker.c</itemPath>
       <itemPath>C:/ECE118/Lab0_Part7.X/TemplateES_Main.c</itemPath>
-      <itemPath>C:/ECE118/Lab0_Part7.X/TemplateFSM.c</itemPath>
+      <itemPath>C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/Lab0_Part7.X/TemplateFSM.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -61,6 +61,7 @@
   <sourceRootList>
     <Elem>C:\ece118_lab0\Lab0_Part7.X</Elem>
     <Elem>C:\ECE118</Elem>
+    <Elem>C:\Users\cfiguer7\Desktop\ECE218\ece118-2024\Lab0_Part7.X</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -72,7 +73,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>noID</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.21</languageToolchainVersion>
+        <languageToolchainVersion>4.10</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>

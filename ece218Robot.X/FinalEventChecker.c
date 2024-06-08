@@ -31,6 +31,7 @@
 #include "ES_Events.h"
 #include "serial.h"
 #include "AD.h"
+#include "Robot.h"
 #include "Robot_HSM.h"
 #include <stdio.h>
 
@@ -38,7 +39,7 @@
  * MODULE #DEFINES                                                             *
  ******************************************************************************/
 #define BATTERY_DISCONNECT_THRESHOLD 175
-
+#define IS_ON 1
 /*******************************************************************************
  * EVENTCHECKER_TEST SPECIFIC CODE                                                             *
  ******************************************************************************/
@@ -110,14 +111,183 @@ uint8_t CheckBattery(void) {
     return (returnVal);
 }
 
+uint8_t CheckBumpers(void) {
+    static ES_EventTyp_t lastEventFL = FOUND_TAPE;
+    static ES_EventTyp_t lastEventFR = FOUND_TAPE;
+    static ES_EventTyp_t lastEventRL = FOUND_TAPE;
+    static ES_EventTyp_t lastEventRR = FOUND_TAPE;
 
-uint8_t CheckBumpers(void);
+    ES_EventTyp_t curEventFL;
+    ES_EventTyp_t curEventFR;
+    ES_EventTyp_t curEventRL;
+    ES_EventTyp_t curEventRR;
+    ES_Event thisEvent;
 
-uint8_t CheckTapeSensors(void);
+    uint8_t returnVal = FALSE;
+    uint16_t statusFL = Robot_ReadFrontLeftBumper(); // read the FL bumper
+    uint16_t statusFR = Robot_ReadFrontRightBumper(); // read the FR bumper
+    uint16_t statusRL = Robot_ReadRearLeftBumper(); // read the RL bumper
+    uint16_t statusRR = Robot_ReadRearRightBumper(); // read the RR bumper
 
-uint8_t CheckBeacon(void);
+    if (statusFL == TAPE_PRESENT) { // is bumper tripped?
+        curEventFL = FOUND_TAPE;
+    } else {
+        curEventFL = ES_NO_EVENT;
+    }
 
-uint8_t CheckTrackwire(void);
+    if (statusFR == TAPE_PRESENT) { // is bumper tripped?
+        curEventFR = FOUND_TAPE;
+    } else {
+        curEventFR = ES_NO_EVENT;
+    }
+    if (statusRL == TAPE_PRESENT) { // is bumper tripped?
+        curEventRL = FOUND_TAPE;
+    } else {
+        curEventRL = ES_NO_EVENT;
+    }
+    if (statusRR == TAPE_PRESENT) { // is bumper tripped?
+        curEventRR = FOUND_TAPE;
+    } else {
+        curEventRR = ES_NO_EVENT;
+    }
+
+
+    if (curEventFL != lastEventFL) { // check for change from last time
+        thisEvent.EventType = curEventFL;
+        thisEvent.EventParam = FrontLeft;
+        returnVal = TRUE;
+        lastEventFL = curEventFL; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif   
+    } else if (curEventFR != lastEventFR) { // check for change from last time
+        thisEvent.EventType = curEventFR;
+        thisEvent.EventParam = FrontRight;
+        returnVal = TRUE;
+        lastEventFR = curEventFR; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif   
+    } else if (curEventRL != lastEventRL) { // check for change from last time
+        thisEvent.EventType = curEventRL;
+        thisEvent.EventParam = RearLeft;
+        returnVal = TRUE;
+        lastEventRL = curEventRL; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif   
+    } else if (curEventRR != lastEventRR) { // check for change from last time
+        thisEvent.EventType = curEventRR;
+        thisEvent.EventParam = RearRight;
+        returnVal = TRUE;
+        lastEventRR = curEventRR; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif
+    }
+    return (returnVal);
+}
+
+uint8_t CheckTapeSensors(void) {
+    static ES_EventTyp_t lastEventFL = BUMP;
+    static ES_EventTyp_t lastEventFR = BUMP;
+    static ES_EventTyp_t lastEventRL = BUMP;
+    static ES_EventTyp_t lastEventRR = BUMP;
+
+    ES_EventTyp_t curEventFL;
+    ES_EventTyp_t curEventFR;
+    ES_EventTyp_t curEventRL;
+    ES_EventTyp_t curEventRR;
+    ES_Event thisEvent;
+
+    uint8_t returnVal = FALSE;
+    uint16_t statusFL = Robot_ReadFrontLeftBumper(); // read the FL bumper
+    uint16_t statusFR = Robot_ReadFrontRightBumper(); // read the FR bumper
+    uint16_t statusRL = Robot_ReadRearLeftBumper(); // read the RL bumper
+    uint16_t statusRR = Robot_ReadRearRightBumper(); // read the RR bumper
+
+    if (statusFL == BUMPER_TRIPPED) { // is bumper tripped?
+        curEventFL = BUMP;
+    } else {
+        curEventFL = ES_NO_EVENT;
+    }
+
+    if (statusFR == BUMPER_TRIPPED) { // is bumper tripped?
+        curEventFR = BUMP;
+    } else {
+        curEventFR = ES_NO_EVENT;
+    }
+    if (statusRL == BUMPER_TRIPPED) { // is bumper tripped?
+        curEventRL = BUMP;
+    } else {
+        curEventRL = ES_NO_EVENT;
+    }
+    if (statusRR == BUMPER_TRIPPED) { // is bumper tripped?
+        curEventRR = BUMP;
+    } else {
+        curEventRR = ES_NO_EVENT;
+    }
+
+
+    if (curEventFL != lastEventFL) { // check for change from last time
+        thisEvent.EventType = curEventFL;
+        thisEvent.EventParam = FrontLeft;
+        returnVal = TRUE;
+        lastEventFL = curEventFL; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif   
+    } else if (curEventFR != lastEventFR) { // check for change from last time
+        thisEvent.EventType = curEventFR;
+        thisEvent.EventParam = FrontRight;
+        returnVal = TRUE;
+        lastEventFR = curEventFR; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif   
+    } else if (curEventRL != lastEventRL) { // check for change from last time
+        thisEvent.EventType = curEventRL;
+        thisEvent.EventParam = RearLeft;
+        returnVal = TRUE;
+        lastEventRL = curEventRL; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif   
+    } else if (curEventRR != lastEventRR) { // check for change from last time
+        thisEvent.EventType = curEventRR;
+        thisEvent.EventParam = RearRight;
+        returnVal = TRUE;
+        lastEventRR = curEventRR; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif
+    }
+    return (returnVal);
+}
+
+uint8_t CheckBeacon(void) {
+    ;
+}
+
+uint8_t CheckTrackwire(void) {
+    ;
+}
 
 
 /* 

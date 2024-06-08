@@ -91,16 +91,17 @@ static const char *EventNames[] = {
 
 /****************************************************************************/
 // This is the list of event checking functions
-#define EVENT_CHECK_LIST  CheckBattery
+#define EVENT_CHECK_LIST  CheckBumpers, CheckTapeSensors, CheckTrackwire, CheckBeacon, CheckBattery
+
 
 /****************************************************************************/
 // These are the definitions for the post functions to be executed when the
 // corresponding timer expires. All 16 must be defined. If you are not using
 // a timers, then you can use TIMER_UNUSED
 #define TIMER_UNUSED ((pPostFunc)0)
-#define TIMER0_RESP_FUNC TIMER_UNUSED
-#define TIMER1_RESP_FUNC TIMER_UNUSED
-#define TIMER2_RESP_FUNC TIMER_UNUSED
+#define TIMER0_RESP_FUNC PostRobot_HSM //general timer
+#define TIMER1_RESP_FUNC PostRobot_HSM //backing up timer
+#define TIMER2_RESP_FUNC PostRobot_HSM //turning timer
 #define TIMER3_RESP_FUNC TIMER_UNUSED
 #define TIMER4_RESP_FUNC TIMER_UNUSED
 #define TIMER5_RESP_FUNC TIMER_UNUSED
@@ -122,8 +123,9 @@ static const char *EventNames[] = {
 // definitions for the response functions to make it easire to check that
 // the timer number matches where the timer event will be routed
 
-#define GENERIC_NAMED_TIMER 0 /*make sure this is enabled above and posting to the correct state machine*/
-
+#define GENERAL_TIMER 0 /*make sure this is enabled above and posting to the correct state machine*/
+#define BACKING_UP_TIMER 1
+#define TURNING_TIMER 2
 
 /****************************************************************************/
 // The maximum number of services sets an upper bound on the number of 
@@ -134,7 +136,7 @@ static const char *EventNames[] = {
 /****************************************************************************/
 // This macro determines that nuber of services that are *actually* used in
 // a particular application. It will vary in value from 1 to MAX_NUM_SERVICES
-#define NUM_SERVICES 1
+#define NUM_SERVICES 2
 
 /****************************************************************************/
 // These are the definitions for Service 0, the lowest priority service
@@ -154,11 +156,11 @@ static const char *EventNames[] = {
 // These are the definitions for Service 1
 #if NUM_SERVICES > 1
 // the header file with the public fuction prototypes
-#define SERV_1_HEADER "TestService.h"
+#define SERV_1_HEADER "Robot_HSM.h"
 // the name of the Init function
-#define SERV_1_INIT TestServiceInit
+#define SERV_1_INIT InitRobot_HSM
 // the name of the run function
-#define SERV_1_RUN TestServiceRun
+#define SERV_1_RUN RunRobot_HSM
 // How big should this services Queue be?
 #define SERV_1_QUEUE_SIZE 3
 #endif

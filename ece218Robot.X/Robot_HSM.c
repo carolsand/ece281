@@ -32,11 +32,20 @@
 #include "ES_Framework.h"
 #include "BOARD.h"
 #include "Robot_HSM.h"
+#include "Robot.h"
+#include "FinalEventChecker.h"
 #include "FindTowerSubHSM.h" //#include all sub state machines called
+#include <stdio.h>
 /*******************************************************************************
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
 //Include any defines you need to do
+#define DRIVE_TIME 1000
+#define DANCE_TIME 500
+
+#define BACKING_UP_SPEED 70
+#define BACKING_UP_TIME 400
+#define TURNING_TIME 250
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -45,12 +54,20 @@
 
 typedef enum {
     InitPState,
-    FirstState,
+    DRIVING_FORWARD,
+    HIDING,
+    BACKING_UP,
+    BoundDetected,
+    EVADE_FORWARD,
 } Robot_HSMState_t;
 
 static const char *StateNames[] = {
 	"InitPState",
-	"FirstState",
+	"DRIVING_FORWARD",
+	"HIDING",
+	"BACKING_UP",
+	"BoundDetected",
+	"EVADE_FORWARD",
 };
 
 
@@ -84,8 +101,7 @@ static uint8_t MyPriority;
  *        to rename this to something appropriate.
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-uint8_t InitRobot_HSM(uint8_t Priority)
-{
+uint8_t InitRobot_HSM(uint8_t Priority) {
     MyPriority = Priority;
     // put us into the Initial PseudoState
     CurrentState = InitPState;
@@ -106,8 +122,7 @@ uint8_t InitRobot_HSM(uint8_t Priority)
  *        be posted to. Remember to rename to something appropriate.
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-uint8_t PostRobot_HSM(ES_Event ThisEvent)
-{
+uint8_t PostRobot_HSM(ES_Event ThisEvent) {
     return ES_PostToService(MyPriority, ThisEvent);
 }
 
@@ -126,55 +141,243 @@ uint8_t PostRobot_HSM(ES_Event ThisEvent)
  *       not consumed as these need to pass pack to the higher level state machine.
  * @author J. Edward Carryer, 2011.10.23 19:25
  * @author Gabriel H Elkaim, 2011.10.23 19:25 */
-ES_Event RunRobot_HSM(ES_Event ThisEvent)
-{
+ES_Event RunRobot_HSM(ES_Event ThisEvent) {
     uint8_t makeTransition = FALSE; // use to flag transition
     Robot_HSMState_t nextState; // <- change type to correct enum
-
+    static uint8_t bumperStatus = 0;
+    static uint8_t tapeSensorStatus = 0;
+    static Robot_HSMState_t prevState4tape = DRIVING_FORWARD;
+    static Robot_HSMState_t prevState4bump = DRIVING_FORWARD;
     ES_Tattle(); // trace call stack
 
     switch (CurrentState) {
-    case InitPState: // If current state is initial Pseudo State
-        if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
-        {
-            // this is where you would put any actions associated with the
-            // transition from the initial pseudo-state into the actual
-            // initial state
-            // Initialize all sub-state machines
-            InitFindTowerSubHSM();
-            // now put the machine into the actual initial state
-            nextState = FirstState;
+        case InitPState: // If current state is initial Pseudo State
+            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
+            {
+                // this is where you would put any actions associated with the
+                // transition from the initial pseudo-state into the actual
+                // initial state
+                // Initialize all sub-state machines
+                //InitFindTowerSubHSM();
+                // now put the machine into the actual initial state
+                nextState = DRIVING_FORWARD;
+                makeTransition = TRUE;
+                ThisEvent.EventType = ES_NO_EVENT;
+            }
+            break;
+
+            /*====DRIVING_FORWARD_STATE==================================================*/
+        case DRIVING_FORWARD: // while in this state, drive forward
+            //ThisEvent, the input argument of RunTemplateFSM, is the event that just happened n needs processing
+            switch (ThisEvent.EventType) { // THIS SWITCH CASE IS FOR THE EVENTS THAT OCCUR WITHIN THIS STATE
+                case ES_ENTRY: //when we enter this state, drive, and send ES_NO_EVENT after                    
+                    Robot_LeftMtrSpeed(ROBOT_MAX_SPEED);
+                    Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                    ThisEvent.EventType = ES_NO_EVENT; // (should always b done once we are done doing what we wanna do w current event)
+                    break;
+
+                case BUMP: // when the bumper(s) gets pushed 
+                    nextState = BACKING_UP; // PUSHED event will cause state machine to transition to BACKING_UP state (.. cause we need to back up)
+                    makeTransition = TRUE;
+                    bumperStatus = ThisEvent.EventParam; // save the bumpers that were triggered
+                    ThisEvent.EventType = ES_NO_EVENT; // (should always b done once we are done doing what we wanna do w current event)
+                    break;
+
+                case FOUND_TAPE: // when the tape sensor(s)(s) get activated
+                    nextState = BACKING_UP;
+                    makeTransition = TRUE;
+                    tapeSensorStatus = ThisEvent.EventParam; // save the tape sensors that were triggered
+                    ThisEvent.EventType = ES_NO_EVENT; // (should always b done once we are done doing what we wanna do w current event)
+                    break;
+
+                default: //ignore all other events
+                    break;
+            }
+            break;
+            /*============================================DRIVING_FORWARD_STATE END=======*/
+
+
+            /*====BACKING_UP_STATE========================================================*/
+        case BACKING_UP: // the front bumpers were hit so we gotta reverse
+            switch (ThisEvent.EventType) {
+                case ES_NO_EVENT:
+                    break;
+                case ES_ENTRY:
+                    // if we get bumped, then we first go backwards
+                    // if we get bumped, then we first go backwards
+                    switch (bumperStatus) {
+                        case FrontLeft:
+                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
+                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
+                            break;
+                        case FrontRight:
+                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
+                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
+                            break;
+                        case RearLeft:
+                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
+                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                            break;
+                        case RearRight:
+                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
+                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                            break;
+                    }
+                    ES_Timer_InitTimer(BACKING_UP_TIMER, BACKING_UP_TIME);
+            }
+            break;
+
+        case ES_TIMEOUT:
+            if (ThisEvent.EventParam == BACKING_UP_TIMER) {
+                // we have finished backing up, and now we want to turn a lil bit
+                Robot_LeftMtrSpeed(0);
+                Robot_RightMtrSpeed(65);
+                ES_Timer_InitTimer(TURNING_TIMER, TURNING_TIME); //reset timer
+            } else if (ThisEvent.EventParam == TURNING_TIMER) {
+                //we have finished turning, now we go back prev state
+                nextState = prevState4bump;
+                makeTransition = TRUE;
+                ThisEvent.EventType = ES_NO_EVENT;
+            }
+            break;
+        case BUMP:
+            // if we get bumped, then we first go backwards
+            switch (ThisEvent.EventParam) {
+                case FrontLeft:
+                    Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
+                    Robot_RightMtrSpeed(-BACKING_UP_SPEED);
+                    break;
+                case FrontRight:
+                    Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
+                    Robot_RightMtrSpeed(-BACKING_UP_SPEED);
+                    break;
+                case RearLeft:
+                    Robot_LeftMtrSpeed(BACKING_UP_SPEED);
+                    Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                    break;
+                case RearRight:
+                    Robot_LeftMtrSpeed(BACKING_UP_SPEED);
+                    Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                    break;
+            }
+            ES_Timer_InitTimer(BACKING_UP_TIMER, BACKING_UP_TIME);
+            ThisEvent.EventType = ES_NO_EVENT;
+            break;
+        
+        case FOUND_TAPE:
+            //   printf("Tape found\r\n");
+            tapeSensorStatus = ThisEvent.EventParam;
+            // transition to BoundDetected
+            nextState = BoundDetected;
             makeTransition = TRUE;
             ThisEvent.EventType = ES_NO_EVENT;
-            ;
-        }
-        break;
-
-    case FirstState: // in the first state, replace this with correct names
-        // run sub-state machine for this state
-        //NOTE: the SubState Machine runs and responds to events before anything in the this
-        //state machine does
-        ThisEvent = RunFindTowerSubHSM(ThisEvent);
-        switch (ThisEvent.EventType) {
-        case ES_NO_EVENT:
+            break;
         default:
             break;
-        }
-        break;
-    default: // all unhandled states fall into here
-        break;
-    } // end switch on Current State
+    
+    break;
+    /*============================================BACKING_UP_STATE_END============*/
+    case BoundDetected: // in the first state, replace this with correct names
+    // run sub-state machine for this state
+    //NOTE: the SubState Machine runs and responds to events before anything in the this
+    //state machine does
+    //  ThisEvent = RunBoundDetectedSubHSM(ThisEvent);
+    switch (ThisEvent.EventType) {
+        case ES_NO_EVENT:
+            break;
+        case ES_ENTRY:
+            if (prevState4tape == BACKING_UP) {
+                // if we get bumped, then we first go backwards
+                switch (tapeSensorStatus) {
+                    case FrontLeft:
+                        Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
+                        Robot_RightMtrSpeed(-BACKING_UP_SPEED);
+                        break;
+                    case FrontRight:
+                        Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
+                        Robot_RightMtrSpeed(-BACKING_UP_SPEED);
+                        break;
+                    case RearLeft:
+                        Robot_LeftMtrSpeed(BACKING_UP_SPEED);
+                        Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                        break;
+                    case RearRight:
+                        Robot_LeftMtrSpeed(BACKING_UP_SPEED);
+                        Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                        break;
+                }
+                ES_Timer_InitTimer(BACKING_UP_TIMER, BACKING_UP_TIME);
+            }
+            //                    else {
+            //                        //we detected the tape but we are choosing to ignore it
+            //                        //go back to locate correct hole state.
+            //                        nextState = LocateCorrectHole;
+            //                        makeTransition = TRUE;
+            //                    }
+            //ThisEvent.EventType = ES_NO_EVENT;
+            break;
+        case FOUND_TAPE:
+            switch (ThisEvent.EventParam) {
+                case FrontLeft:
+                    Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
+                    Robot_RightMtrSpeed(-BACKING_UP_SPEED);
+                    break;
+                case FrontRight:
+                    Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
+                    Robot_RightMtrSpeed(-BACKING_UP_SPEED);
+                    break;
+                case RearLeft:
+                    Robot_LeftMtrSpeed(BACKING_UP_SPEED);
+                    Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                    break;
+                case RearRight:
+                    Robot_LeftMtrSpeed(BACKING_UP_SPEED);
+                    Robot_RightMtrSpeed(BACKING_UP_SPEED);
+                    break;
+            }
+            ES_Timer_InitTimer(BACKING_UP_TIMER, BACKING_UP_TIME);
+            ThisEvent.EventType = ES_NO_EVENT;
+            break;
+        case ES_TIMEOUT:
+            if (ThisEvent.EventParam == BACKING_UP_TIMER) {
+                // we have finished backing up, and now we want to turn a lil bit
+                Robot_LeftMtrSpeed(0);
+                Robot_RightMtrSpeed(65);
+                ES_Timer_InitTimer(TURNING_TIMER, TURNING_TIME); //reset timer
+            } else if (ThisEvent.EventParam == TURNING_TIMER) {
+                //we have finished turning, now we go back to our previous state
+                nextState = prevState4tape;
+                makeTransition = TRUE;
+                ThisEvent.EventType = ES_NO_EVENT;
+            }
+            break;
+        case BUMP:
+            // transition to BumpDetected
+            bumperStatus = ThisEvent.EventParam;
+            nextState = BACKING_UP;
+            makeTransition = TRUE;
+            ThisEvent.EventType = ES_NO_EVENT;
+            break;
+        default:
+            break;
+    }
+    break;
+    }
+
+    // end switch on Current State
+
 
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
-        RunRobot_HSM(EXIT_EVENT); // <- rename to your own Run function
+        RunRobot_HSM(EXIT_EVENT);
         CurrentState = nextState;
-        RunRobot_HSM(ENTRY_EVENT); // <- rename to your own Run function
+        RunRobot_HSM(ENTRY_EVENT);
     }
-
     ES_Tail(); // trace call stack end
     return ThisEvent;
+
 }
+
 
 
 /*******************************************************************************
