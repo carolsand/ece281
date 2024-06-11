@@ -24,8 +24,8 @@
 /*******************************************************************************
  * PUBLIC FUNCTION PROTOTYPES                                                  *
  ******************************************************************************/
-#define BUMPER_TRIPPED 1
-#define BUMPER_NOT_TRIPPED 0
+#define BUMPER_TRIPPED 0
+#define BUMPER_NOT_TRIPPED 1
 
 #define TAPE_PRESENT 1
 #define TAPE_NOT_PRESENT 0

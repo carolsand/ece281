@@ -6,9 +6,9 @@ build/ROBOT_TEST/production/_ext/1975241074/ES_KeyboardInput.o: \
  C:/ECE118/include/ES_KeyboardInput.h C:/ECE118/include/ES_LookupTables.h \
  C:/ECE118/include/ES_Port.h C:/ECE118/include/ES_PostList.h \
  C:/ECE118/include/ES_PriorTables.h C:/ECE118/include/ES_Queue.h \
- C:/ECE118/include/ES_ServiceHeaders.h C:/ECE118/include/ES_TattleTale.h \
- C:/ECE118/include/ES_TattleTale.h C:/ECE118/include/ES_KeyboardInput.h \
- C:/ECE118/include/serial.h
+ C:/ECE118/include/ES_ServiceHeaders.h Robot_HSM.h ES_Configure.h \
+ C:/ECE118/include/ES_TattleTale.h C:/ECE118/include/ES_TattleTale.h \
+ C:/ECE118/include/ES_KeyboardInput.h C:/ECE118/include/serial.h
 
 C:/ECE118/include/BOARD.h:
 
@@ -37,6 +37,10 @@ C:/ECE118/include/ES_PriorTables.h:
 C:/ECE118/include/ES_Queue.h:
 
 C:/ECE118/include/ES_ServiceHeaders.h:
+
+Robot_HSM.h:
+
+ES_Configure.h:
 
 C:/ECE118/include/ES_TattleTale.h:
 

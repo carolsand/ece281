@@ -27,12 +27,12 @@
 /* PINS FOR THE MOTORS */
 #define LEFT_DIR                PORTY09_LAT
 #define LEFT_DIR_INV            PORTZ09_LAT
-#define RIGHT_DIR               PORTZ12_LAT
+#define RIGHT_DIR               PORTY08_LAT
 #define RIGHT_DIR_INV           PORTY10_LAT
 
 #define LEFT_DIR_TRIS           PORTY09_TRIS
 #define LEFT_DIR_INV_TRIS       PORTZ09_TRIS
-#define RIGHT_DIR_TRIS          PORTZ12_TRIS
+#define RIGHT_DIR_TRIS          PORTY08_TRIS
 #define RIGHT_DIR_INV_TRIS      PORTY10_TRIS
 
 #define LEFT_PWM                PWM_PORTZ06
@@ -91,7 +91,6 @@ static char FL_tapeSensorStatus = TAPE_NOT_PRESENT; //front left tape sensor
 static char FR_tapeSensorStatus = TAPE_NOT_PRESENT; //front right tape sensor
 static char RL_tapeSensorStatus = TAPE_NOT_PRESENT; //rear left tape sensor
 static char RR_tapeSensorStatus = TAPE_NOT_PRESENT; //rear right tape sensor
-
 
 typedef union {
 
@@ -171,7 +170,7 @@ void Robot_Init(void) {
     LEFT_DIR = LOW;
     LEFT_DIR_INV = HIGH;
     RIGHT_DIR = LOW;
-    RIGHT_DIR_INV = ~RIGHT_DIR;
+    RIGHT_DIR_INV = HIGH;
 
 
     // set up servos
@@ -242,8 +241,6 @@ char Robot_RightMtrSpeed(char newSpeed) {
     }
     return (SUCCESS);
 }
-
-
 
 /**
  * @Function Robot_BatteryVoltage(void)
@@ -365,13 +362,12 @@ char Robot_BarGraph(uint8_t Number) {
     return SUCCESS;
 }
 
-
 unsigned char Robot_ReadFrontLeftTape(void) {
     int tapeSensorValue = 0;
-    
+
     if (AD_IsNewDataReady) {
         tapeSensorValue = AD_ReadADPin(TAPE_SENSOR_FRONT_LEFT);
-        if (tapeSensorValue > TAPE_SENSOR_THRESHOLD) {
+        if (tapeSensorValue < TAPE_SENSOR_THRESHOLD) {
             FL_tapeSensorStatus = TAPE_PRESENT;
             return TAPE_PRESENT;
         } else {
@@ -385,10 +381,10 @@ unsigned char Robot_ReadFrontLeftTape(void) {
 
 unsigned char Robot_ReadFrontRightTape(void) {
     int tapeSensorValue = 0;
-    
+
     if (AD_IsNewDataReady) {
         tapeSensorValue = AD_ReadADPin(TAPE_SENSOR_FRONT_RIGHT);
-        if (tapeSensorValue > TAPE_SENSOR_THRESHOLD) {
+        if (tapeSensorValue < TAPE_SENSOR_THRESHOLD) {
             FR_tapeSensorStatus = TAPE_PRESENT;
             return TAPE_PRESENT;
         } else {
@@ -402,10 +398,10 @@ unsigned char Robot_ReadFrontRightTape(void) {
 
 unsigned char Robot_ReadRearLeftTape(void) {
     int tapeSensorValue = 0;
-    
+
     if (AD_IsNewDataReady) {
         tapeSensorValue = AD_ReadADPin(TAPE_SENSOR_REAR_LEFT);
-        if (tapeSensorValue > TAPE_SENSOR_THRESHOLD) {
+        if (tapeSensorValue < TAPE_SENSOR_THRESHOLD) {
             RL_tapeSensorStatus = TAPE_PRESENT;
             return TAPE_PRESENT;
         } else {
@@ -419,10 +415,10 @@ unsigned char Robot_ReadRearLeftTape(void) {
 
 unsigned char Robot_ReadRearRightTape(void) {
     int tapeSensorValue = 0;
-    
+
     if (AD_IsNewDataReady) {
         tapeSensorValue = AD_ReadADPin(TAPE_SENSOR_REAR_RIGHT);
-        if (tapeSensorValue > TAPE_SENSOR_THRESHOLD) {
+        if (tapeSensorValue < TAPE_SENSOR_THRESHOLD) {
             RR_tapeSensorStatus = TAPE_PRESENT;
             return TAPE_PRESENT;
         } else {
@@ -441,9 +437,9 @@ unsigned char Robot_ReadRearRightTape(void) {
  * @brief This function is used to set the position of the servo 
  * @author
  */
-unsigned char Robot_SetScoopServo(int newPosition){
-    if (newPosition > 2500 || newPosition < 500){
-        return(ERROR);
+unsigned char Robot_SetScoopServo(int newPosition) {
+    if (newPosition > 2500 || newPosition < 500) {
+        return (ERROR);
     }
     RC_SetPulseTime(SCOOP_SERVO, newPosition);
     return (SUCCESS);
@@ -457,9 +453,9 @@ unsigned char Robot_SetScoopServo(int newPosition){
  * @brief This function is used to set the position of the servo
  * @author
  */
-unsigned char Robot_SetDoorServo(int newPosition){
-        if (newPosition > 2000 || newPosition < 1000){
-        return(ERROR);
+unsigned char Robot_SetDoorServo(int newPosition) {
+    if (newPosition > 2000 || newPosition < 1000) {
+        return (ERROR);
     }
     RC_SetPulseTime(DOOR_SERVO, newPosition);
     return (SUCCESS);
@@ -477,31 +473,96 @@ void main(void) {
     static char i = 0;
     static unsigned int servoPulse = 1200;
     static unsigned int doorPulse = 1500;
+    static unsigned char tapeStatus = TAPE_NOT_PRESENT;
+
+    printf("welcome to ece218 robot test harness \r\nenter a key to perform a test.\r\n\r\n");
+    printf("t: tests all the tape sensors, reads them and prints out the response and its raw value \r\n");
+    printf("u: moves the scoop servo up\r\nd: moves the scoop servo down\r\n");
+    printf("l: moves the door servo inwards\r\nr: moves the door servo outwards\r\n\r\n");
+    printf("press the bumpers to run the motors. \r\nfront right bumper = right motor max forward speed \r\n");
+    printf("front left bumper = left motor max forward speed \r\nrear right bumper = max reverse speed for both\r\n");
+    printf("rear left bumper = stop both motors\r\n\r\n");
+
 
     while (1) {
-        Robot_LeftMtrSpeed(100);
-        Robot_RightMtrSpeed(100);
+        //Robot_LeftMtrSpeed(100);
+        //Robot_RightMtrSpeed(-100);
+        if (Robot_ReadFrontLeftBumper() == BUMPER_TRIPPED) {
+            Robot_LeftMtrSpeed(100);
+        }
+        if (Robot_ReadRearLeftBumper() == BUMPER_TRIPPED) {
+            Robot_LeftMtrSpeed(0);
+            Robot_RightMtrSpeed(0);
+        }
+        if (Robot_ReadFrontRightBumper() == BUMPER_TRIPPED) {
+            Robot_RightMtrSpeed(100);
+        }
+        if (Robot_ReadRearRightBumper() == BUMPER_TRIPPED) {
+            Robot_RightMtrSpeed(-100);
+            Robot_LeftMtrSpeed(-100);
+            
+        }
+
         i = GetChar();
+
+        if (i == 't') { //test tape sensors
+            tapeStatus = Robot_ReadFrontLeftTape();
+            if (tapeStatus == TAPE_PRESENT) {
+                printf("value: %d, front left tape is present\r\n", AD_ReadADPin(TAPE_SENSOR_FRONT_LEFT));
+            } else {
+                printf("value: %d, front left tape is NOT present\r\n", AD_ReadADPin(TAPE_SENSOR_FRONT_LEFT));
+            }
+
+            tapeStatus = Robot_ReadFrontRightTape();
+            if (tapeStatus == TAPE_PRESENT) {
+                printf("value: %d, front right tape is present\r\n", AD_ReadADPin(TAPE_SENSOR_FRONT_RIGHT));
+            } else {
+                printf("value: %d, front right tape is NOT present\r\n", AD_ReadADPin(TAPE_SENSOR_FRONT_RIGHT));
+            }
+
+            tapeStatus = Robot_ReadRearLeftTape();
+            if (tapeStatus == TAPE_PRESENT) {
+                printf("value: %d, rear left tape is present\r\n", AD_ReadADPin(TAPE_SENSOR_REAR_LEFT));
+            } else {
+                printf("value: %d, rear left tape is NOT present\r\n", AD_ReadADPin(TAPE_SENSOR_REAR_LEFT));
+            }
+
+            tapeStatus = Robot_ReadRearRightTape();
+            if (tapeStatus == TAPE_PRESENT) {
+                printf("value: %d, rear right tape is present \r\n", AD_ReadADPin(TAPE_SENSOR_REAR_RIGHT));
+            } else {
+                printf("value: %d, rear right tape is NOT present \r\n", AD_ReadADPin(TAPE_SENSOR_REAR_RIGHT));
+            }
+
+        }
         if (i == 'u') {
-            servoPulse = servoPulse + 40;
-            Robot_SetScoopServo(servoPulse);
+            if (servoPulse < 2500) {
+                servoPulse = servoPulse + 40;
+                Robot_SetScoopServo(servoPulse);
+            }
             printf("scoop servo value: %d \r\n\r\n", servoPulse);
         }
 
         if (i == 'd') {
-            servoPulse = servoPulse - 40;
-            Robot_SetScoopServo(servoPulse);
+            if (servoPulse > 500) {
+                servoPulse = servoPulse - 40;
+                Robot_SetScoopServo(servoPulse);
+            }
             printf("scoop servo value: %d \r\n\r\n", servoPulse);
         }
         if (i == 'l') {
-            doorPulse = 1050;//doorPulse + 50;
-            Robot_SetDoorServo(doorPulse);
+            if (doorPulse < 2000) {
+                doorPulse = doorPulse + 50;
+                Robot_SetDoorServo(doorPulse);
+            }
             printf("door servo value: %d \r\n\r\n", doorPulse);
         }
 
         if (i == 'r') {
-            doorPulse = 1800;//doorPulse - 50;
-            Robot_SetDoorServo(doorPulse);
+            if (doorPulse > 1000) {
+                doorPulse = doorPulse - 50;
+                Robot_SetDoorServo(doorPulse);
+            }
             printf("door servo value: %d \r\n\r\n", doorPulse);
         }
 
