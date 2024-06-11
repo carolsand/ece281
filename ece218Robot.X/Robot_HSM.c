@@ -46,6 +46,9 @@
 #define BACKING_UP_TIME 400
 #define TURNING_TIME 250
 
+#define SCOOP_PERIOD_TIME 5000
+#define TIME_PAUSED 1000
+
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
  ******************************************************************************/
@@ -170,9 +173,9 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
             //ThisEvent, the input argument of RunTemplateFSM, is the event that just happened n needs processing
             switch (ThisEvent.EventType) { // THIS SWITCH CASE IS FOR THE EVENTS THAT OCCUR WITHIN THIS STATE
                 case ES_ENTRY: //when we enter this state, drive, and send ES_NO_EVENT after                    
-                    Robot_LeftMtrSpeed(ROBOT_MAX_SPEED);
-                    Robot_RightMtrSpeed(ROBOT_MAX_SPEED);
-                    ES_Timer_InitTimer(SCOOP_TIMER, 10000); ///initialize timer, every 10 seconds the scoop deposits 
+                    Robot_LeftMtrSpeed(80);
+                    Robot_RightMtrSpeed(80);
+                    ES_Timer_InitTimer(SCOOP_TIMER, SCOOP_PERIOD_TIME); ///initialize timer, every 10 seconds the scoop deposits 
                     ThisEvent.EventType = ES_NO_EVENT; // (should always b done once we are done doing what we wanna do w current event)
                     break;
 
@@ -196,13 +199,13 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                         Robot_LeftMtrSpeed(0);
                         Robot_RightMtrSpeed(0);
                         Robot_DepositBalls();
-                        ES_Timer_InitTimer(PAUSE_TIMER, 1000); //wait a little bit before resetting
+                        ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
                     }
                     if (ThisEvent.EventParam == PAUSE_TIMER) {
                         Robot_ResetScoop();
-                        Robot_LeftMtrSpeed(ROBOT_MAX_SPEED);
-                        Robot_RightMtrSpeed(ROBOT_MAX_SPEED);
-                        ES_Timer_InitTimer(SCOOP_TIMER, 10000);
+                        Robot_LeftMtrSpeed(80);
+                        Robot_RightMtrSpeed(80);
+                        ES_Timer_InitTimer(SCOOP_TIMER, SCOOP_PERIOD_TIME);
                     }
                 default: //ignore all other events
                     break;
@@ -249,7 +252,7 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                     }
                     if (ThisEvent.EventParam == TURNING_TIMER) {
                         //we have finished turning, now we go back prev state
-                        nextState = prevState4bump;
+                        nextState = DRIVING_FORWARD;
                         makeTransition = TRUE;
                         ThisEvent.EventType = ES_NO_EVENT;
                     }
@@ -257,11 +260,11 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                         Robot_LeftMtrSpeed(0);
                         Robot_RightMtrSpeed(0);
                         Robot_DepositBalls();
-                        ES_Timer_InitTimer(PAUSE_TIMER, 1000); //wait a little bit before resetting
+                        ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
                     }
                     if (ThisEvent.EventParam == PAUSE_TIMER) {
                         Robot_ResetScoop();
-                        ES_Timer_InitTimer(SCOOP_TIMER, 10000);
+                        ES_Timer_InitTimer(SCOOP_TIMER, SCOOP_PERIOD_TIME);
                     }
                     break;
                 case BUMP:
@@ -373,7 +376,7 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                         ES_Timer_InitTimer(TURNING_TIMER, TURNING_TIME); //reset timer
                     } else if (ThisEvent.EventParam == TURNING_TIMER) {
                         //we have finished turning, now we go back to our previous state
-                        nextState = prevState4tape;
+                        nextState = DRIVING_FORWARD;
                         makeTransition = TRUE;
                         ThisEvent.EventType = ES_NO_EVENT;
                     }
@@ -381,11 +384,11 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                         Robot_LeftMtrSpeed(0);
                         Robot_RightMtrSpeed(0);
                         Robot_DepositBalls();
-                        ES_Timer_InitTimer(PAUSE_TIMER, 1000); //wait a little bit before resetting
+                        ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
                     }
                     if (ThisEvent.EventParam == PAUSE_TIMER) {
                         Robot_ResetScoop();
-                        ES_Timer_InitTimer(SCOOP_TIMER, 10000);
+                        ES_Timer_InitTimer(SCOOP_TIMER, SCOOP_PERIOD_TIME);
                     }
                     break;
                 case BUMP:
