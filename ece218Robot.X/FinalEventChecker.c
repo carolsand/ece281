@@ -111,7 +111,7 @@ uint8_t CheckBattery(void) {
     return (returnVal);
 }
 
-uint8_t CheckBumpers(void) {
+uint8_t CheckTapeSensors(void) {
     static ES_EventTyp_t lastEventFL = FOUND_TAPE;
     static ES_EventTyp_t lastEventFR = FOUND_TAPE;
     static ES_EventTyp_t lastEventRL = FOUND_TAPE;
@@ -124,28 +124,28 @@ uint8_t CheckBumpers(void) {
     ES_Event thisEvent;
 
     uint8_t returnVal = FALSE;
-    uint16_t statusFL = Robot_ReadFrontLeftBumper(); // read the FL bumper
-    uint16_t statusFR = Robot_ReadFrontRightBumper(); // read the FR bumper
-    uint16_t statusRL = Robot_ReadRearLeftBumper(); // read the RL bumper
-    uint16_t statusRR = Robot_ReadRearRightBumper(); // read the RR bumper
+    uint16_t statusFL = Robot_ReadFrontLeftTape(); // read the FL tape sensor
+    uint16_t statusFR = Robot_ReadFrontRightTape(); // read the FR tape sensor
+    uint16_t statusRL = Robot_ReadRearLeftTape(); // read the RL tape sensor
+    uint16_t statusRR = Robot_ReadRearRightTape(); // read the RR tape sensor
 
-    if (statusFL == TAPE_PRESENT) { // is bumper tripped?
+    if (statusFL == TAPE_PRESENT) { // is tape sensor tripped?
         curEventFL = FOUND_TAPE;
     } else {
         curEventFL = ES_NO_EVENT;
     }
 
-    if (statusFR == TAPE_PRESENT) { // is bumper tripped?
+    if (statusFR == TAPE_PRESENT) { // is tape sensor tripped?
         curEventFR = FOUND_TAPE;
     } else {
         curEventFR = ES_NO_EVENT;
     }
-    if (statusRL == TAPE_PRESENT) { // is bumper tripped?
+    if (statusRL == TAPE_PRESENT) { // is tape sensor tripped?
         curEventRL = FOUND_TAPE;
     } else {
         curEventRL = ES_NO_EVENT;
     }
-    if (statusRR == TAPE_PRESENT) { // is bumper tripped?
+    if (statusRR == TAPE_PRESENT) { // is tape sensor tripped?
         curEventRR = FOUND_TAPE;
     } else {
         curEventRR = ES_NO_EVENT;
@@ -196,7 +196,7 @@ uint8_t CheckBumpers(void) {
     return (returnVal);
 }
 
-uint8_t CheckTapeSensors(void) {
+uint8_t CheckBumpers(void) {
     static ES_EventTyp_t lastEventFL = BUMP;
     static ES_EventTyp_t lastEventFR = BUMP;
     static ES_EventTyp_t lastEventRL = BUMP;

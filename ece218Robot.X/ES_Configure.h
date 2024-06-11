@@ -20,10 +20,10 @@
 //defines for keyboard input
 //#define USE_KEYBOARD_INPUT
 //What State machine are we testing
-//#define POSTFUNCTION_FOR_KEYBOARD_INPUT PostGenericService
+//#define POSTFUNCTION_FOR_KEYBOARD_INPUT PostRobot_HSM
 
 //define for TattleTale
-//#define USE_TATTLETALE
+#define USE_TATTLETALE
 
 //uncomment to supress the entry and exit events
 //#define SUPPRESS_EXIT_ENTRY_IN_TATTLE
