@@ -102,8 +102,8 @@ static const char *EventNames[] = {
 #define TIMER0_RESP_FUNC PostRobot_HSM //general timer
 #define TIMER1_RESP_FUNC PostRobot_HSM //backing up timer
 #define TIMER2_RESP_FUNC PostRobot_HSM //turning timer
-#define TIMER3_RESP_FUNC TIMER_UNUSED
-#define TIMER4_RESP_FUNC TIMER_UNUSED
+#define TIMER3_RESP_FUNC PostRobot_HSM //scoop timer
+#define TIMER4_RESP_FUNC PostRobot_HSM //pause timer
 #define TIMER5_RESP_FUNC TIMER_UNUSED
 #define TIMER6_RESP_FUNC TIMER_UNUSED
 #define TIMER7_RESP_FUNC TIMER_UNUSED
@@ -126,6 +126,8 @@ static const char *EventNames[] = {
 #define GENERAL_TIMER 0 /*make sure this is enabled above and posting to the correct state machine*/
 #define BACKING_UP_TIMER 1
 #define TURNING_TIMER 2
+#define SCOOP_TIMER 3
+#define PAUSE_TIMER 4
 
 /****************************************************************************/
 // The maximum number of services sets an upper bound on the number of 

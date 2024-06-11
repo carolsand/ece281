@@ -286,7 +286,30 @@ uint8_t CheckBeacon(void) {
 }
 
 uint8_t CheckTrackwire(void) {
-    ;
+        static ES_EventTyp_t lastEvent = LOST_TRACKWIRE;
+
+    ES_EventTyp_t curEvent;
+    ES_Event thisEvent;
+    uint8_t returnVal = FALSE;
+    uint16_t trackwireStatus = Robot_IsTrackwirePresent(); // check the status of the trackwire
+    if (trackwireStatus == TRACKWIRE_PRESENT) { // is battery connected?
+        curEvent = FOUND_TRACKWIRE;
+    } else {
+        curEvent = LOST_TRACKWIRE;
+    }
+    if (curEvent != lastEvent) { // check for change from last time
+        thisEvent.EventType = curEvent;
+        thisEvent.EventParam = trackwireStatus;
+        returnVal = TRUE;
+        lastEvent = curEvent; // update history
+#ifndef EVENTCHECKER_TEST           // keep this as is for test harness
+        PostRobot_HSM(thisEvent);
+#else
+        SaveEvent(thisEvent);
+#endif   
+    }
+    return (returnVal);
+
 }
 
 

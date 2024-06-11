@@ -55,10 +55,10 @@
 
 /* PINS FOR DETECTORS */
 #define BEACON_DETECTOR         PORTZ08_BIT
-#define TRACK_WIRE_DETECTOR     PORTZ11_BIT
+#define TRACK_WIRE_DETECTOR     AD_PORTV8
 
 #define BEACON_DETECTOR_TRIS    PORTZ08_TRIS
-#define TRACK_WIRE_DETECT_TRIS  PORTZ11_BIT
+//#define TRACK_WIRE_DETECT_TRIS  PORTY07_BIT
 
 /* PINS FOR TAPE SENSORS */
 #define TAPE_SENSOR_FRONT_LEFT  AD_PORTV3
@@ -79,14 +79,15 @@
 #define LED_Off(i) *LED_LATSET[(unsigned int)i] = LED_bitsMap[(unsigned int)i];
 #define LED_Get(i) (*LED_LAT[(unsigned int)i]&LED_bitsMap[(unsigned int)i])
 
-#define TAPE_SENSOR_THRESHOLD 700
+#define TAPE_SENSOR_THRESHOLD 750
+#define TRACKWIRE_THRESHOLD 700
 
 
 /*******************************************************************************
  * PRIVATE VARIABLES                                                           *
  ******************************************************************************/
 
-static char tapeSensorStatus = TAPE_NOT_PRESENT;
+static char trackwireStatus = TRACKWIRE_NOT_PRESENT;
 static char FL_tapeSensorStatus = TAPE_NOT_PRESENT; //front left tape sensor
 static char FR_tapeSensorStatus = TAPE_NOT_PRESENT; //front right tape sensor
 static char RL_tapeSensorStatus = TAPE_NOT_PRESENT; //rear left tape sensor
@@ -149,7 +150,6 @@ static unsigned short int LED_bitsMap[] = {BIT_7, BIT_5, BIT_10, BIT_11, BIT_3, 
 void Robot_Init(void) {
     // set up beacon detector and track wire detector as inputs 
     BEACON_DETECTOR_TRIS = INPUT;
-    TRACK_WIRE_DETECT_TRIS = INPUT;
 
     // also set up bumpers (limit switches) as inputs
     BUMP_FRONT_LEFT_TRIS = INPUT;
@@ -178,14 +178,14 @@ void Robot_Init(void) {
     RC_AddPins(DOOR_SERVO | SCOOP_SERVO);
 
 
-    RC_SetPulseTime(DOOR_SERVO, 2000);
+    RC_SetPulseTime(DOOR_SERVO, 1950);
     RC_SetPulseTime(SCOOP_SERVO, 1120);
 
     // set up tape sensors 
 
     AD_Init();
     AD_AddPins(TAPE_SENSOR_FRONT_LEFT | TAPE_SENSOR_FRONT_RIGHT
-            | TAPE_SENSOR_REAR_LEFT | TAPE_SENSOR_REAR_RIGHT);
+            | TAPE_SENSOR_REAR_LEFT | TAPE_SENSOR_REAR_RIGHT | TRACK_WIRE_DETECTOR);
 
 
 }
@@ -430,6 +430,23 @@ unsigned char Robot_ReadRearRightTape(void) {
     }
 }
 
+unsigned char Robot_IsTrackwirePresent(void){
+    int trackwireValue = 0;
+
+    if (AD_IsNewDataReady) {
+        trackwireValue = AD_ReadADPin(TRACK_WIRE_DETECTOR);
+        if (trackwireValue < TRACKWIRE_THRESHOLD) {
+            trackwireStatus = TRACKWIRE_NOT_PRESENT;
+            return TRACKWIRE_NOT_PRESENT;
+        } else {
+            trackwireStatus = TRACKWIRE_PRESENT;
+            return TRACKWIRE_PRESENT;
+        }
+    } else {
+        return trackwireStatus;
+    }
+}
+
 /**
  * @Function Robot_SetScoopServo(int position)
  * @param position (500 - 2500)
@@ -461,7 +478,14 @@ unsigned char Robot_SetDoorServo(int newPosition) {
     return (SUCCESS);
 }
 
-
+unsigned char Robot_DepositBalls(void){
+    RC_SetPulseTime(SCOOP_SERVO, 2450);
+    return (SUCCESS);
+}
+unsigned char Robot_ResetScoop(void){
+    RC_SetPulseTime(SCOOP_SERVO, 1120);
+    return (SUCCESS);
+}
 
 
 #ifdef ROBOT_TEST
@@ -476,6 +500,7 @@ void main(void) {
     static unsigned char tapeStatus = TAPE_NOT_PRESENT;
 
     printf("welcome to ece218 robot test harness \r\nenter a key to perform a test.\r\n\r\n");
+    printf("w: print trackwire raw value\r\n");
     printf("t: tests all the tape sensors, reads them and prints out the response and its raw value \r\n");
     printf("u: moves the scoop servo up\r\nd: moves the scoop servo down\r\n");
     printf("l: moves the door servo inwards\r\nr: moves the door servo outwards\r\n\r\n");
@@ -504,7 +529,9 @@ void main(void) {
         }
 
         i = GetChar();
-
+        if(i=='w'){
+            printf("value: %d, trackwire value\r\n", AD_ReadADPin(TRACK_WIRE_DETECTOR));
+        }
         if (i == 't') { //test tape sensors
             tapeStatus = Robot_ReadFrontLeftTape();
             if (tapeStatus == TAPE_PRESENT) {

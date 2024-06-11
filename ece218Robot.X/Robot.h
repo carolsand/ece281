@@ -30,6 +30,9 @@
 #define TAPE_PRESENT 1
 #define TAPE_NOT_PRESENT 0
 
+#define TRACKWIRE_PRESENT 1
+#define TRACKWIRE_NOT_PRESENT 0
+
 #define ROBOT_MAX_SPEED 100 
 
 /**
@@ -189,6 +192,11 @@ unsigned char Robot_SetScoopServo(int newPosition);
  * @author
  */
 unsigned char Robot_SetDoorServo(int newPosition);
+
+unsigned char Robot_DepositBalls(void);
+unsigned char Robot_ResetScoop(void);
+
+unsigned char Robot_IsTrackwirePresent(void);
 
 #endif
 
