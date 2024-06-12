@@ -64495,3 +64495,283 @@ static const char *StateNames[] = {
 [DEBUG]2024-06-11 20:55:42,111: None
 [DEBUG]2024-06-11 20:55:42,111: None
 [DEBUG]2024-06-11 20:55:42,111: None
+[DEBUG]2024-06-11 21:36:51,466: <re.Match object; span=(1083, 1945), match='typedef enum {\n    ES_NO_EVENT, ES_ERROR, /* use>
+[DEBUG]2024-06-11 21:36:51,466: ['ES_NO_EVENT', 'ES_ERROR', 'ES_INIT', 'ES_ENTRY', 'ES_EXIT', 'ES_KEYINPUT', 'ES_LISTEVENTS', 'ES_TIMEOUT', 'ES_TIMERACTIVE', 'ES_TIMERSTOPPED', 'BUMP', 'NO_BUMP', 'FOUND_TRACKWIRE', 'LOST_TRACKWIRE', 'FOUND_BEACON', 'LOST_BEACON', 'FOUND_TAPE', 'LOST_TAPE', 'BATTERY_CONNECTED', 'BATTERY_DISCONNECTED', 'NUMBEROFEVENTS']
+[DEBUG]2024-06-11 21:36:51,466: 
+static const char *EventNames[] = {
+	"ES_NO_EVENT",
+	"ES_ERROR",
+	"ES_INIT",
+	"ES_ENTRY",
+	"ES_EXIT",
+	"ES_KEYINPUT",
+	"ES_LISTEVENTS",
+	"ES_TIMEOUT",
+	"ES_TIMERACTIVE",
+	"ES_TIMERSTOPPED",
+	"BUMP",
+	"NO_BUMP",
+	"FOUND_TRACKWIRE",
+	"LOST_TRACKWIRE",
+	"FOUND_BEACON",
+	"LOST_BEACON",
+	"FOUND_TAPE",
+	"LOST_TAPE",
+	"BATTERY_CONNECTED",
+	"BATTERY_DISCONNECTED",
+	"NUMBEROFEVENTS",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,468: None
+[DEBUG]2024-06-11 21:36:51,468: None
+[DEBUG]2024-06-11 21:36:51,469: None
+[DEBUG]2024-06-11 21:36:51,469: None
+[DEBUG]2024-06-11 21:36:51,469: None
+[DEBUG]2024-06-11 21:36:51,469: <re.Match object; span=(1568, 1646), match='typedef enum {\n    InitPSubState,\n    SubFirstS>
+[DEBUG]2024-06-11 21:36:51,469: <re.Match object; span=(1568, 1646), match='typedef enum {\n    InitPSubState,\n    SubFirstS>
+[DEBUG]2024-06-11 21:36:51,469: <re.Match object; span=(1568, 1646), match='typedef enum {\n    InitPSubState,\n    SubFirstS>
+[DEBUG]2024-06-11 21:36:51,469: <re.Match object; span=(1568, 1646), match='typedef enum {\n    InitPSubState,\n    SubFirstS>
+[DEBUG]2024-06-11 21:36:51,469: ['InitPSubState', 'SubFirstState']
+[DEBUG]2024-06-11 21:36:51,469: ['InitPSubState', 'SubFirstState']
+[DEBUG]2024-06-11 21:36:51,469: ['InitPSubState', 'SubFirstState']
+[DEBUG]2024-06-11 21:36:51,469: ['InitPSubState', 'SubFirstState']
+[DEBUG]2024-06-11 21:36:51,470: 
+static const char *StateNames[] = {
+	"InitPSubState",
+	"SubFirstState",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,470: 
+static const char *StateNames[] = {
+	"InitPSubState",
+	"SubFirstState",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,470: 
+static const char *StateNames[] = {
+	"InitPSubState",
+	"SubFirstState",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,470: 
+static const char *StateNames[] = {
+	"InitPSubState",
+	"SubFirstState",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,470: None
+[DEBUG]2024-06-11 21:36:51,470: None
+[DEBUG]2024-06-11 21:36:51,470: None
+[DEBUG]2024-06-11 21:36:51,470: None
+[DEBUG]2024-06-11 21:36:51,470: None
+[DEBUG]2024-06-11 21:36:51,471: <re.Match object; span=(2181, 2264), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:36:51,471: <re.Match object; span=(2181, 2264), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:36:51,471: <re.Match object; span=(2181, 2264), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:36:51,471: <re.Match object; span=(2181, 2264), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:36:51,471: <re.Match object; span=(2181, 2264), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:36:51,471: <re.Match object; span=(2181, 2264), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:36:51,471: ['InitPState', 'DRIVING_FORWARD', 'HIDING']
+[DEBUG]2024-06-11 21:36:51,471: ['InitPState', 'DRIVING_FORWARD', 'HIDING']
+[DEBUG]2024-06-11 21:36:51,471: ['InitPState', 'DRIVING_FORWARD', 'HIDING']
+[DEBUG]2024-06-11 21:36:51,471: ['InitPState', 'DRIVING_FORWARD', 'HIDING']
+[DEBUG]2024-06-11 21:36:51,471: ['InitPState', 'DRIVING_FORWARD', 'HIDING']
+[DEBUG]2024-06-11 21:36:51,471: ['InitPState', 'DRIVING_FORWARD', 'HIDING']
+[DEBUG]2024-06-11 21:36:51,472: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,472: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,472: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,472: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,472: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+};
+
+
+[DEBUG]2024-06-11 21:36:51,472: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,114: <re.Match object; span=(1083, 1945), match='typedef enum {\n    ES_NO_EVENT, ES_ERROR, /* use>
+[DEBUG]2024-06-11 21:37:24,114: ['ES_NO_EVENT', 'ES_ERROR', 'ES_INIT', 'ES_ENTRY', 'ES_EXIT', 'ES_KEYINPUT', 'ES_LISTEVENTS', 'ES_TIMEOUT', 'ES_TIMERACTIVE', 'ES_TIMERSTOPPED', 'BUMP', 'NO_BUMP', 'FOUND_TRACKWIRE', 'LOST_TRACKWIRE', 'FOUND_BEACON', 'LOST_BEACON', 'FOUND_TAPE', 'LOST_TAPE', 'BATTERY_CONNECTED', 'BATTERY_DISCONNECTED', 'NUMBEROFEVENTS']
+[DEBUG]2024-06-11 21:37:24,115: 
+static const char *EventNames[] = {
+	"ES_NO_EVENT",
+	"ES_ERROR",
+	"ES_INIT",
+	"ES_ENTRY",
+	"ES_EXIT",
+	"ES_KEYINPUT",
+	"ES_LISTEVENTS",
+	"ES_TIMEOUT",
+	"ES_TIMERACTIVE",
+	"ES_TIMERSTOPPED",
+	"BUMP",
+	"NO_BUMP",
+	"FOUND_TRACKWIRE",
+	"LOST_TRACKWIRE",
+	"FOUND_BEACON",
+	"LOST_BEACON",
+	"FOUND_TAPE",
+	"LOST_TAPE",
+	"BATTERY_CONNECTED",
+	"BATTERY_DISCONNECTED",
+	"NUMBEROFEVENTS",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,117: None
+[DEBUG]2024-06-11 21:37:24,117: None
+[DEBUG]2024-06-11 21:37:24,117: None
+[DEBUG]2024-06-11 21:37:24,117: None
+[DEBUG]2024-06-11 21:37:24,117: None
+[DEBUG]2024-06-11 21:37:24,118: <re.Match object; span=(1568, 1646), match='typedef enum {\n    InitPSubState,\n    SubFirstS>
+[DEBUG]2024-06-11 21:37:24,118: <re.Match object; span=(1568, 1646), match='typedef enum {\n    InitPSubState,\n    SubFirstS>
+[DEBUG]2024-06-11 21:37:24,118: <re.Match object; span=(1568, 1646), match='typedef enum {\n    InitPSubState,\n    SubFirstS>
+[DEBUG]2024-06-11 21:37:24,118: <re.Match object; span=(1568, 1646), match='typedef enum {\n    InitPSubState,\n    SubFirstS>
+[DEBUG]2024-06-11 21:37:24,118: ['InitPSubState', 'SubFirstState']
+[DEBUG]2024-06-11 21:37:24,118: ['InitPSubState', 'SubFirstState']
+[DEBUG]2024-06-11 21:37:24,118: ['InitPSubState', 'SubFirstState']
+[DEBUG]2024-06-11 21:37:24,118: ['InitPSubState', 'SubFirstState']
+[DEBUG]2024-06-11 21:37:24,118: 
+static const char *StateNames[] = {
+	"InitPSubState",
+	"SubFirstState",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,118: 
+static const char *StateNames[] = {
+	"InitPSubState",
+	"SubFirstState",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,118: 
+static const char *StateNames[] = {
+	"InitPSubState",
+	"SubFirstState",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,118: 
+static const char *StateNames[] = {
+	"InitPSubState",
+	"SubFirstState",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,119: None
+[DEBUG]2024-06-11 21:37:24,119: None
+[DEBUG]2024-06-11 21:37:24,119: None
+[DEBUG]2024-06-11 21:37:24,119: None
+[DEBUG]2024-06-11 21:37:24,119: None
+[DEBUG]2024-06-11 21:37:24,120: <re.Match object; span=(2181, 2315), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:37:24,120: <re.Match object; span=(2181, 2315), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:37:24,120: <re.Match object; span=(2181, 2315), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:37:24,120: <re.Match object; span=(2181, 2315), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:37:24,120: <re.Match object; span=(2181, 2315), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:37:24,120: <re.Match object; span=(2181, 2315), match='typedef enum {\n    InitPState,\n    DRIVING_FORW>
+[DEBUG]2024-06-11 21:37:24,121: ['InitPState', 'DRIVING_FORWARD', 'HIDING', 'BACKING_UP', 'BoundDetected']
+[DEBUG]2024-06-11 21:37:24,121: ['InitPState', 'DRIVING_FORWARD', 'HIDING', 'BACKING_UP', 'BoundDetected']
+[DEBUG]2024-06-11 21:37:24,121: ['InitPState', 'DRIVING_FORWARD', 'HIDING', 'BACKING_UP', 'BoundDetected']
+[DEBUG]2024-06-11 21:37:24,121: ['InitPState', 'DRIVING_FORWARD', 'HIDING', 'BACKING_UP', 'BoundDetected']
+[DEBUG]2024-06-11 21:37:24,121: ['InitPState', 'DRIVING_FORWARD', 'HIDING', 'BACKING_UP', 'BoundDetected']
+[DEBUG]2024-06-11 21:37:24,121: ['InitPState', 'DRIVING_FORWARD', 'HIDING', 'BACKING_UP', 'BoundDetected']
+[DEBUG]2024-06-11 21:37:24,122: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+	"BACKING_UP",
+	"BoundDetected",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,122: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+	"BACKING_UP",
+	"BoundDetected",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,122: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+	"BACKING_UP",
+	"BoundDetected",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,122: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+	"BACKING_UP",
+	"BoundDetected",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,122: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+	"BACKING_UP",
+	"BoundDetected",
+};
+
+
+[DEBUG]2024-06-11 21:37:24,122: 
+static const char *StateNames[] = {
+	"InitPState",
+	"DRIVING_FORWARD",
+	"HIDING",
+	"BACKING_UP",
+	"BoundDetected",
+};
+
+

@@ -69,7 +69,6 @@
 #define LIGHT_SENSOR 100 // ???
 #define ROBOT_BAT_VOLTAGE BAT_VOLTAGE
 
-
 //light bar defines
 #define NUMLEDS 12
 
@@ -80,8 +79,7 @@
 #define LED_Get(i) (*LED_LAT[(unsigned int)i]&LED_bitsMap[(unsigned int)i])
 
 #define TAPE_SENSOR_THRESHOLD 750
-#define TRACKWIRE_THRESHOLD 700
-
+#define TRACKWIRE_THRESHOLD 800
 
 /*******************************************************************************
  * PRIVATE VARIABLES                                                           *

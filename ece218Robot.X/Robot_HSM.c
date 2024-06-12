@@ -57,6 +57,8 @@ typedef enum {
     InitPState,
     DRIVING_FORWARD,
     HIDING,
+            BACKING_UP,
+            BoundDetected,
 } Robot_HSMState_t;
 
 static const char *StateNames[] = {
@@ -65,7 +67,6 @@ static const char *StateNames[] = {
 	"HIDING",
 	"BACKING_UP",
 	"BoundDetected",
-	"EVADE_FORWARD",
 };
 
 
