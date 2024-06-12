@@ -35,6 +35,7 @@
       <itemPath>../ece218Robot.X/FindTowerSubHSM.h</itemPath>
       <itemPath>../ece218Robot.X/Robot.h</itemPath>
       <itemPath>../ece218Robot.X/Robot_HSM.h</itemPath>
+      <itemPath>C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/ece218Robot.X/UnloadScoopService.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -74,6 +75,7 @@
       <itemPath>../ece218Robot.X/FindTowerSubHSM.c</itemPath>
       <itemPath>../ece218Robot.X/Robot.c</itemPath>
       <itemPath>../ece218Robot.X/Robot_HSM.c</itemPath>
+      <itemPath>C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/ece218Robot.X/UnloadScoopService.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>

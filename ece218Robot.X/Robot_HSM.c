@@ -198,7 +198,7 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                     if (ThisEvent.EventParam == SCOOP_TIMER) {
                         Robot_LeftMtrSpeed(0);
                         Robot_RightMtrSpeed(0);
-                        Robot_DepositBalls();
+                        Robot_UnloadScoop();
                         ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
                     }
                     if (ThisEvent.EventParam == PAUSE_TIMER) {
@@ -259,7 +259,7 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                     if (ThisEvent.EventParam == SCOOP_TIMER) {
                         Robot_LeftMtrSpeed(0);
                         Robot_RightMtrSpeed(0);
-                        Robot_DepositBalls();
+                        Robot_UnloadScoop();
                         ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
                     }
                     if (ThisEvent.EventParam == PAUSE_TIMER) {
@@ -383,7 +383,7 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                     if (ThisEvent.EventParam == SCOOP_TIMER) {
                         Robot_LeftMtrSpeed(0);
                         Robot_RightMtrSpeed(0);
-                        Robot_DepositBalls();
+                        Robot_UnloadScoop();
                         ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
                     }
                     if (ThisEvent.EventParam == PAUSE_TIMER) {

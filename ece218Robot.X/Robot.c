@@ -478,7 +478,7 @@ unsigned char Robot_SetDoorServo(int newPosition) {
     return (SUCCESS);
 }
 
-unsigned char Robot_DepositBalls(void){
+unsigned char Robot_UnloadScoop(void){
     RC_SetPulseTime(SCOOP_SERVO, 2450);
     return (SUCCESS);
 }

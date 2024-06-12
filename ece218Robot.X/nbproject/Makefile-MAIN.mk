@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../ece218Robot.X/FinalES_Main.c ../ece218Robot.X/FinalEventChecker.c ../ece218Robot.X/FindTowerSubHSM.c ../ece218Robot.X/Robot.c ../ece218Robot.X/Robot_HSM.c C:/ECE118/src/BOARD.c pwm.c C:/ECE118/src/LED.c C:/ECE118/src/AD.c C:/ECE118/src/IO_Ports.c C:/ECE118/src/timers.c C:/ECE118/src/Stepper.c C:/ECE118/src/serial.c RC_Servo.c C:/ECE118/src/ES_CheckEvents.c C:/ECE118/src/ES_Framework.c C:/ECE118/src/ES_KeyboardInput.c C:/ECE118/src/ES_PostList.c C:/ECE118/src/ES_Queue.c C:/ECE118/src/ES_TattleTale.c C:/ECE118/src/ES_Timers.c
+SOURCEFILES_QUOTED_IF_SPACED=C:/ECE118/src/BOARD.c pwm.c C:/ECE118/src/LED.c C:/ECE118/src/AD.c C:/ECE118/src/IO_Ports.c C:/ECE118/src/timers.c C:/ECE118/src/Stepper.c C:/ECE118/src/serial.c RC_Servo.c C:/ECE118/src/ES_CheckEvents.c C:/ECE118/src/ES_Framework.c C:/ECE118/src/ES_KeyboardInput.c C:/ECE118/src/ES_PostList.c C:/ECE118/src/ES_Queue.c C:/ECE118/src/ES_TattleTale.c C:/ECE118/src/ES_Timers.c ../ece218Robot.X/FinalES_Main.c ../ece218Robot.X/FinalEventChecker.c ../ece218Robot.X/FindTowerSubHSM.c ../ece218Robot.X/Robot.c ../ece218Robot.X/Robot_HSM.c C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/ece218Robot.X/UnloadScoopService.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/2087666291/FinalES_Main.o ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o ${OBJECTDIR}/_ext/2087666291/Robot.o ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o ${OBJECTDIR}/_ext/1975241074/BOARD.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/_ext/1975241074/LED.o ${OBJECTDIR}/_ext/1975241074/AD.o ${OBJECTDIR}/_ext/1975241074/IO_Ports.o ${OBJECTDIR}/_ext/1975241074/timers.o ${OBJECTDIR}/_ext/1975241074/Stepper.o ${OBJECTDIR}/_ext/1975241074/serial.o ${OBJECTDIR}/RC_Servo.o ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o ${OBJECTDIR}/_ext/1975241074/ES_Framework.o ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1975241074/ES_PostList.o ${OBJECTDIR}/_ext/1975241074/ES_Queue.o ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d ${OBJECTDIR}/_ext/2087666291/Robot.o.d ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d ${OBJECTDIR}/_ext/1975241074/BOARD.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/_ext/1975241074/LED.o.d ${OBJECTDIR}/_ext/1975241074/AD.o.d ${OBJECTDIR}/_ext/1975241074/IO_Ports.o.d ${OBJECTDIR}/_ext/1975241074/timers.o.d ${OBJECTDIR}/_ext/1975241074/Stepper.o.d ${OBJECTDIR}/_ext/1975241074/serial.o.d ${OBJECTDIR}/RC_Servo.o.d ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o.d ${OBJECTDIR}/_ext/1975241074/ES_Framework.o.d ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o.d ${OBJECTDIR}/_ext/1975241074/ES_PostList.o.d ${OBJECTDIR}/_ext/1975241074/ES_Queue.o.d ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o.d ${OBJECTDIR}/_ext/1975241074/ES_Timers.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1975241074/BOARD.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/_ext/1975241074/LED.o ${OBJECTDIR}/_ext/1975241074/AD.o ${OBJECTDIR}/_ext/1975241074/IO_Ports.o ${OBJECTDIR}/_ext/1975241074/timers.o ${OBJECTDIR}/_ext/1975241074/Stepper.o ${OBJECTDIR}/_ext/1975241074/serial.o ${OBJECTDIR}/RC_Servo.o ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o ${OBJECTDIR}/_ext/1975241074/ES_Framework.o ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1975241074/ES_PostList.o ${OBJECTDIR}/_ext/1975241074/ES_Queue.o ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o ${OBJECTDIR}/_ext/2087666291/Robot.o ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1975241074/BOARD.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/_ext/1975241074/LED.o.d ${OBJECTDIR}/_ext/1975241074/AD.o.d ${OBJECTDIR}/_ext/1975241074/IO_Ports.o.d ${OBJECTDIR}/_ext/1975241074/timers.o.d ${OBJECTDIR}/_ext/1975241074/Stepper.o.d ${OBJECTDIR}/_ext/1975241074/serial.o.d ${OBJECTDIR}/RC_Servo.o.d ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o.d ${OBJECTDIR}/_ext/1975241074/ES_Framework.o.d ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o.d ${OBJECTDIR}/_ext/1975241074/ES_PostList.o.d ${OBJECTDIR}/_ext/1975241074/ES_Queue.o.d ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o.d ${OBJECTDIR}/_ext/1975241074/ES_Timers.o.d ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d ${OBJECTDIR}/_ext/2087666291/Robot.o.d ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/2087666291/FinalES_Main.o ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o ${OBJECTDIR}/_ext/2087666291/Robot.o ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o ${OBJECTDIR}/_ext/1975241074/BOARD.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/_ext/1975241074/LED.o ${OBJECTDIR}/_ext/1975241074/AD.o ${OBJECTDIR}/_ext/1975241074/IO_Ports.o ${OBJECTDIR}/_ext/1975241074/timers.o ${OBJECTDIR}/_ext/1975241074/Stepper.o ${OBJECTDIR}/_ext/1975241074/serial.o ${OBJECTDIR}/RC_Servo.o ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o ${OBJECTDIR}/_ext/1975241074/ES_Framework.o ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1975241074/ES_PostList.o ${OBJECTDIR}/_ext/1975241074/ES_Queue.o ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o
+OBJECTFILES=${OBJECTDIR}/_ext/1975241074/BOARD.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/_ext/1975241074/LED.o ${OBJECTDIR}/_ext/1975241074/AD.o ${OBJECTDIR}/_ext/1975241074/IO_Ports.o ${OBJECTDIR}/_ext/1975241074/timers.o ${OBJECTDIR}/_ext/1975241074/Stepper.o ${OBJECTDIR}/_ext/1975241074/serial.o ${OBJECTDIR}/RC_Servo.o ${OBJECTDIR}/_ext/1975241074/ES_CheckEvents.o ${OBJECTDIR}/_ext/1975241074/ES_Framework.o ${OBJECTDIR}/_ext/1975241074/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1975241074/ES_PostList.o ${OBJECTDIR}/_ext/1975241074/ES_Queue.o ${OBJECTDIR}/_ext/1975241074/ES_TattleTale.o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o ${OBJECTDIR}/_ext/2087666291/Robot.o ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o
 
 # Source Files
-SOURCEFILES=../ece218Robot.X/FinalES_Main.c ../ece218Robot.X/FinalEventChecker.c ../ece218Robot.X/FindTowerSubHSM.c ../ece218Robot.X/Robot.c ../ece218Robot.X/Robot_HSM.c C:/ECE118/src/BOARD.c pwm.c C:/ECE118/src/LED.c C:/ECE118/src/AD.c C:/ECE118/src/IO_Ports.c C:/ECE118/src/timers.c C:/ECE118/src/Stepper.c C:/ECE118/src/serial.c RC_Servo.c C:/ECE118/src/ES_CheckEvents.c C:/ECE118/src/ES_Framework.c C:/ECE118/src/ES_KeyboardInput.c C:/ECE118/src/ES_PostList.c C:/ECE118/src/ES_Queue.c C:/ECE118/src/ES_TattleTale.c C:/ECE118/src/ES_Timers.c
+SOURCEFILES=C:/ECE118/src/BOARD.c pwm.c C:/ECE118/src/LED.c C:/ECE118/src/AD.c C:/ECE118/src/IO_Ports.c C:/ECE118/src/timers.c C:/ECE118/src/Stepper.c C:/ECE118/src/serial.c RC_Servo.c C:/ECE118/src/ES_CheckEvents.c C:/ECE118/src/ES_Framework.c C:/ECE118/src/ES_KeyboardInput.c C:/ECE118/src/ES_PostList.c C:/ECE118/src/ES_Queue.c C:/ECE118/src/ES_TattleTale.c C:/ECE118/src/ES_Timers.c ../ece218Robot.X/FinalES_Main.c ../ece218Robot.X/FinalEventChecker.c ../ece218Robot.X/FindTowerSubHSM.c ../ece218Robot.X/Robot.c ../ece218Robot.X/Robot_HSM.c C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/ece218Robot.X/UnloadScoopService.c
 
 
 
@@ -123,36 +123,6 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/2087666291/FinalES_Main.o: ../ece218Robot.X/FinalES_Main.c  .generated_files/flags/MAIN/485b34aaf9604dd0b601d483fdca6bf56a86f8da .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
-	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d" -o ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o ../ece218Robot.X/FinalES_Main.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o: ../ece218Robot.X/FinalEventChecker.c  .generated_files/flags/MAIN/832cd0d449a0f4fe084d6a8969807a1ea36a654e .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
-	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d" -o ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o ../ece218Robot.X/FinalEventChecker.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o: ../ece218Robot.X/FindTowerSubHSM.c  .generated_files/flags/MAIN/b197f9fbe1f9bc236d31aeef38a1c92bf76e07eb .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
-	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d" -o ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o ../ece218Robot.X/FindTowerSubHSM.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/_ext/2087666291/Robot.o: ../ece218Robot.X/Robot.c  .generated_files/flags/MAIN/e4aafc0f8464421c7068404fa085da467f3d2ee3 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
-	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/Robot.o.d" -o ${OBJECTDIR}/_ext/2087666291/Robot.o ../ece218Robot.X/Robot.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/_ext/2087666291/Robot_HSM.o: ../ece218Robot.X/Robot_HSM.c  .generated_files/flags/MAIN/c23b90906e7c64b6536774cbd30b1fcf642428b1 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
-	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d 
-	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d" -o ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o ../ece218Robot.X/Robot_HSM.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
 ${OBJECTDIR}/_ext/1975241074/BOARD.o: C:/ECE118/src/BOARD.c  .generated_files/flags/MAIN/ead3161e1ccae7c932ad6ad31880c4efbc04277a .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
 	@${MKDIR} "${OBJECTDIR}/_ext/1975241074" 
 	@${RM} ${OBJECTDIR}/_ext/1975241074/BOARD.o.d 
@@ -249,37 +219,43 @@ ${OBJECTDIR}/_ext/1975241074/ES_Timers.o: C:/ECE118/src/ES_Timers.c  .generated_
 	@${RM} ${OBJECTDIR}/_ext/1975241074/ES_Timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1975241074/ES_Timers.o.d" -o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o C:/ECE118/src/ES_Timers.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-else
-${OBJECTDIR}/_ext/2087666291/FinalES_Main.o: ../ece218Robot.X/FinalES_Main.c  .generated_files/flags/MAIN/d5f2e2ff2ee2d05680f3640b8b8e3cae2a57e717 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+${OBJECTDIR}/_ext/2087666291/FinalES_Main.o: ../ece218Robot.X/FinalES_Main.c  .generated_files/flags/MAIN/485b34aaf9604dd0b601d483fdca6bf56a86f8da .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
 	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d" -o ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o ../ece218Robot.X/FinalES_Main.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d" -o ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o ../ece218Robot.X/FinalES_Main.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o: ../ece218Robot.X/FinalEventChecker.c  .generated_files/flags/MAIN/36db540253a8427ffc4a73cc4233b0fdffb7f72a .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o: ../ece218Robot.X/FinalEventChecker.c  .generated_files/flags/MAIN/832cd0d449a0f4fe084d6a8969807a1ea36a654e .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
 	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d" -o ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o ../ece218Robot.X/FinalEventChecker.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d" -o ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o ../ece218Robot.X/FinalEventChecker.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o: ../ece218Robot.X/FindTowerSubHSM.c  .generated_files/flags/MAIN/f9c56d0d401833f5f96f0eb618d1eebdf2bcc2db .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o: ../ece218Robot.X/FindTowerSubHSM.c  .generated_files/flags/MAIN/b197f9fbe1f9bc236d31aeef38a1c92bf76e07eb .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
 	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d" -o ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o ../ece218Robot.X/FindTowerSubHSM.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d" -o ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o ../ece218Robot.X/FindTowerSubHSM.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/2087666291/Robot.o: ../ece218Robot.X/Robot.c  .generated_files/flags/MAIN/1fefa61f5d4f251c4c61dc7f401b03aa2b130edc .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+${OBJECTDIR}/_ext/2087666291/Robot.o: ../ece218Robot.X/Robot.c  .generated_files/flags/MAIN/e4aafc0f8464421c7068404fa085da467f3d2ee3 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
 	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/Robot.o.d" -o ${OBJECTDIR}/_ext/2087666291/Robot.o ../ece218Robot.X/Robot.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/Robot.o.d" -o ${OBJECTDIR}/_ext/2087666291/Robot.o ../ece218Robot.X/Robot.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/2087666291/Robot_HSM.o: ../ece218Robot.X/Robot_HSM.c  .generated_files/flags/MAIN/7bb17c7c83ed4243d82b71c2b43c46eb31a50e70 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+${OBJECTDIR}/_ext/2087666291/Robot_HSM.o: ../ece218Robot.X/Robot_HSM.c  .generated_files/flags/MAIN/c23b90906e7c64b6536774cbd30b1fcf642428b1 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
 	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d 
 	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d" -o ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o ../ece218Robot.X/Robot_HSM.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d" -o ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o ../ece218Robot.X/Robot_HSM.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o: C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/ece218Robot.X/UnloadScoopService.c  .generated_files/flags/MAIN/ae427b07e4e6b76944f6a4707fb732e50b649c1 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+	@${MKDIR} "${OBJECTDIR}/_ext/1989689259" 
+	@${RM} ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o.d" -o ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/ece218Robot.X/UnloadScoopService.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+else
 ${OBJECTDIR}/_ext/1975241074/BOARD.o: C:/ECE118/src/BOARD.c  .generated_files/flags/MAIN/d8262c2f96277f1985c2fd2775f5bc124e5756e3 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
 	@${MKDIR} "${OBJECTDIR}/_ext/1975241074" 
 	@${RM} ${OBJECTDIR}/_ext/1975241074/BOARD.o.d 
@@ -375,6 +351,42 @@ ${OBJECTDIR}/_ext/1975241074/ES_Timers.o: C:/ECE118/src/ES_Timers.c  .generated_
 	@${RM} ${OBJECTDIR}/_ext/1975241074/ES_Timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1975241074/ES_Timers.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1975241074/ES_Timers.o.d" -o ${OBJECTDIR}/_ext/1975241074/ES_Timers.o C:/ECE118/src/ES_Timers.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/2087666291/FinalES_Main.o: ../ece218Robot.X/FinalES_Main.c  .generated_files/flags/MAIN/d5f2e2ff2ee2d05680f3640b8b8e3cae2a57e717 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FinalES_Main.o.d" -o ${OBJECTDIR}/_ext/2087666291/FinalES_Main.o ../ece218Robot.X/FinalES_Main.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o: ../ece218Robot.X/FinalEventChecker.c  .generated_files/flags/MAIN/36db540253a8427ffc4a73cc4233b0fdffb7f72a .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o.d" -o ${OBJECTDIR}/_ext/2087666291/FinalEventChecker.o ../ece218Robot.X/FinalEventChecker.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o: ../ece218Robot.X/FindTowerSubHSM.c  .generated_files/flags/MAIN/f9c56d0d401833f5f96f0eb618d1eebdf2bcc2db .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o.d" -o ${OBJECTDIR}/_ext/2087666291/FindTowerSubHSM.o ../ece218Robot.X/FindTowerSubHSM.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/2087666291/Robot.o: ../ece218Robot.X/Robot.c  .generated_files/flags/MAIN/1fefa61f5d4f251c4c61dc7f401b03aa2b130edc .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot.o.d 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/Robot.o.d" -o ${OBJECTDIR}/_ext/2087666291/Robot.o ../ece218Robot.X/Robot.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/2087666291/Robot_HSM.o: ../ece218Robot.X/Robot_HSM.c  .generated_files/flags/MAIN/7bb17c7c83ed4243d82b71c2b43c46eb31a50e70 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+	@${MKDIR} "${OBJECTDIR}/_ext/2087666291" 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d 
+	@${RM} ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/2087666291/Robot_HSM.o.d" -o ${OBJECTDIR}/_ext/2087666291/Robot_HSM.o ../ece218Robot.X/Robot_HSM.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o: C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/ece218Robot.X/UnloadScoopService.c  .generated_files/flags/MAIN/cc8c8a72bb841cdaf7857994c9ad8eb689258929 .generated_files/flags/MAIN/5c6b98b8923ce30ee24d180da03fe6585119c89b
+	@${MKDIR} "${OBJECTDIR}/_ext/1989689259" 
+	@${RM} ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o.d" -o ${OBJECTDIR}/_ext/1989689259/UnloadScoopService.o C:/Users/cfiguer7/Desktop/ECE218/ece118-2024/ece218Robot.X/UnloadScoopService.c    -DXPRJ_MAIN=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
