@@ -193,7 +193,7 @@ unsigned char Robot_SetScoopServo(int newPosition);
  */
 unsigned char Robot_SetDoorServo(int newPosition);
 
-unsigned char Robot_DepositBalls(void);
+unsigned char Robot_UnloadScoop(void);
 unsigned char Robot_ResetScoop(void);
 
 unsigned char Robot_IsTrackwirePresent(void);
