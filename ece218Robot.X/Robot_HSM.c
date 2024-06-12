@@ -46,8 +46,7 @@
 #define BACKING_UP_TIME 400
 #define TURNING_TIME 250
 
-#define SCOOP_PERIOD_TIME 5000
-#define TIME_PAUSED 1000
+
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -58,9 +57,6 @@ typedef enum {
     InitPState,
     DRIVING_FORWARD,
     HIDING,
-    BACKING_UP,
-    BoundDetected,
-    EVADE_FORWARD,
 } Robot_HSMState_t;
 
 static const char *StateNames[] = {
@@ -172,41 +168,17 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
         case DRIVING_FORWARD: // while in this state, drive forward
             //ThisEvent, the input argument of RunTemplateFSM, is the event that just happened n needs processing
             switch (ThisEvent.EventType) { // THIS SWITCH CASE IS FOR THE EVENTS THAT OCCUR WITHIN THIS STATE
-                case ES_ENTRY: //when we enter this state, drive, and send ES_NO_EVENT after                    
-                    Robot_LeftMtrSpeed(80);
-                    Robot_RightMtrSpeed(80);
-                    ES_Timer_InitTimer(SCOOP_TIMER, SCOOP_PERIOD_TIME); ///initialize timer, every 10 seconds the scoop deposits 
+                case ES_ENTRY: //when we enter this state, drive, and send ES_NO_EVENT after                                    
                     ThisEvent.EventType = ES_NO_EVENT; // (should always b done once we are done doing what we wanna do w current event)
                     break;
-
-                case BUMP: // when the bumper(s) gets pushed 
-                    prevState4bump = DRIVING_FORWARD;
-                    nextState = BACKING_UP; // PUSHED event will cause state machine to transition to BACKING_UP state (.. cause we need to back up)
-                    makeTransition = TRUE;
-                    bumperStatus = ThisEvent.EventParam; // save the bumpers that were triggered
+                case BUMP: // when the bumper(s) gets pushed                    
                     ThisEvent.EventType = ES_NO_EVENT; // (should always b done once we are done doing what we wanna do w current event)
                     break;
-
-                case FOUND_TAPE: // when the tape sensor(s)(s) get activated
-                    prevState4tape = DRIVING_FORWARD;
-                    nextState = BACKING_UP;
-                    makeTransition = TRUE;
-                    tapeSensorStatus = ThisEvent.EventParam; // save the tape sensors that were triggered
+                case FOUND_TAPE: // when the tape sensor(s)(s) get activated                   
                     ThisEvent.EventType = ES_NO_EVENT; // (should always b done once we are done doing what we wanna do w current event)
                     break;
-                case ES_TIMEOUT:
-                    if (ThisEvent.EventParam == SCOOP_TIMER) {
-                        Robot_LeftMtrSpeed(0);
-                        Robot_RightMtrSpeed(0);
-                        Robot_UnloadScoop();
-                        ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
-                    }
-                    if (ThisEvent.EventParam == PAUSE_TIMER) {
-                        Robot_ResetScoop();
-                        Robot_LeftMtrSpeed(80);
-                        Robot_RightMtrSpeed(80);
-                        ES_Timer_InitTimer(SCOOP_TIMER, SCOOP_PERIOD_TIME);
-                    }
+                case ES_TIMEOUT: 
+                    break;
                 default: //ignore all other events
                     break;
             }
@@ -220,92 +192,21 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                 case ES_NO_EVENT:
                     break;
                 case ES_ENTRY:
-                    // if we get bumped, then we first go backwards
-                    switch (bumperStatus) {
-                        case FrontLeft:
-                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
-                            break;
-                        case FrontRight:
-                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
-                            break;
-                        case RearLeft:
-                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
-                            break;
-                        case RearRight:
-                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
-                            break;
-                    }
-                    ES_Timer_InitTimer(BACKING_UP_TIMER, BACKING_UP_TIME);
                     break;
-
-
                 case ES_TIMEOUT:
-                    if (ThisEvent.EventParam == BACKING_UP_TIMER) {
-                        // we have finished backing up, and now we want to turn a lil bit
-                        Robot_LeftMtrSpeed(0);
-                        Robot_RightMtrSpeed(65);
-                        ES_Timer_InitTimer(TURNING_TIMER, TURNING_TIME); //reset timer
-                    }
-                    if (ThisEvent.EventParam == TURNING_TIMER) {
-                        //we have finished turning, now we go back prev state
-                        nextState = DRIVING_FORWARD;
-                        makeTransition = TRUE;
-                        ThisEvent.EventType = ES_NO_EVENT;
-                    }
-                    if (ThisEvent.EventParam == SCOOP_TIMER) {
-                        Robot_LeftMtrSpeed(0);
-                        Robot_RightMtrSpeed(0);
-                        Robot_UnloadScoop();
-                        ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
-                    }
-                    if (ThisEvent.EventParam == PAUSE_TIMER) {
-                        Robot_ResetScoop();
-                        ES_Timer_InitTimer(SCOOP_TIMER, SCOOP_PERIOD_TIME);
-                    }
                     break;
                 case BUMP:
-                    // if we get bumped, then we first go backwards
-                    switch (ThisEvent.EventParam) {
-                        case FrontLeft:
-                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
-                            break;
-                        case FrontRight:
-                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
-                            break;
-                        case RearLeft:
-                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
-                            break;
-                        case RearRight:
-                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
-                            break;
-                    }
-                    ES_Timer_InitTimer(BACKING_UP_TIMER, BACKING_UP_TIME);
                     ThisEvent.EventType = ES_NO_EVENT;
                     break;
-
                 case FOUND_TAPE:
-                    //   printf("Tape found\r\n");
-                    tapeSensorStatus = ThisEvent.EventParam;
-                    prevState4tape = BACKING_UP;
-                    // transition to BoundDetected
-                    nextState = BoundDetected;
-                    makeTransition = TRUE;
                     ThisEvent.EventType = ES_NO_EVENT;
                     break;
                 default:
                     break;
             }
-
             break;
             /*============================================BACKING_UP_STATE_END============*/
+       
         case BoundDetected: // in the first state, replace this with correct names
             // run sub-state machine for this state
             //NOTE: the SubState Machine runs and responds to events before anything in the this
@@ -315,87 +216,14 @@ ES_Event RunRobot_HSM(ES_Event ThisEvent) {
                 case ES_NO_EVENT:
                     break;
                 case ES_ENTRY:
-                    //if (prevState4tape == BACKING_UP) {
-                    // if we get bumped, then we first go backwards
-                    switch (tapeSensorStatus) {
-                        case FrontLeft:
-                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
-                            break;
-                        case FrontRight:
-                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
-                            break;
-                        case RearLeft:
-                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
-                            break;
-                        case RearRight:
-                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
-                            break;
-                    }
-                    ES_Timer_InitTimer(BACKING_UP_TIMER, BACKING_UP_TIME);
-                    // }
-                    //                    else {
-                    //                        //we detected the tape but we are choosing to ignore it
-                    //                        //go back to locate correct hole state.
-                    //                        nextState = LocateCorrectHole;
-                    //                        makeTransition = TRUE;
-                    //                    }
-                    //ThisEvent.EventType = ES_NO_EVENT;
-                    break;
-                case FOUND_TAPE:
-                    switch (ThisEvent.EventParam) {
-                        case FrontLeft:
-                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
-                            break;
-                        case FrontRight:
-                            Robot_LeftMtrSpeed(-BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(-BACKING_UP_SPEED);
-                            break;
-                        case RearLeft:
-                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
-                            break;
-                        case RearRight:
-                            Robot_LeftMtrSpeed(BACKING_UP_SPEED);
-                            Robot_RightMtrSpeed(BACKING_UP_SPEED);
-                            break;
-                    }
-                    ES_Timer_InitTimer(BACKING_UP_TIMER, BACKING_UP_TIME);
                     ThisEvent.EventType = ES_NO_EVENT;
                     break;
-
+                case FOUND_TAPE:
+                    ThisEvent.EventType = ES_NO_EVENT;
+                    break;
                 case ES_TIMEOUT:
-                    if (ThisEvent.EventParam == BACKING_UP_TIMER) {
-                        // we have finished backing up, and now we want to turn a lil bit
-                        Robot_LeftMtrSpeed(0);
-                        Robot_RightMtrSpeed(65);
-                        ES_Timer_InitTimer(TURNING_TIMER, TURNING_TIME); //reset timer
-                    } else if (ThisEvent.EventParam == TURNING_TIMER) {
-                        //we have finished turning, now we go back to our previous state
-                        nextState = DRIVING_FORWARD;
-                        makeTransition = TRUE;
-                        ThisEvent.EventType = ES_NO_EVENT;
-                    }
-                    if (ThisEvent.EventParam == SCOOP_TIMER) {
-                        Robot_LeftMtrSpeed(0);
-                        Robot_RightMtrSpeed(0);
-                        Robot_UnloadScoop();
-                        ES_Timer_InitTimer(PAUSE_TIMER, TIME_PAUSED); //wait a little bit before resetting
-                    }
-                    if (ThisEvent.EventParam == PAUSE_TIMER) {
-                        Robot_ResetScoop();
-                        ES_Timer_InitTimer(SCOOP_TIMER, SCOOP_PERIOD_TIME);
-                    }
                     break;
                 case BUMP:
-                    // transition to BumpDetected
-                    bumperStatus = ThisEvent.EventParam;
-                    nextState = BACKING_UP;
-                    makeTransition = TRUE;
                     ThisEvent.EventType = ES_NO_EVENT;
                     break;
                 default:

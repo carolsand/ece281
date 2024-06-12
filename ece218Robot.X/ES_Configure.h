@@ -102,8 +102,8 @@ static const char *EventNames[] = {
 #define TIMER0_RESP_FUNC PostRobot_HSM //general timer
 #define TIMER1_RESP_FUNC PostRobot_HSM //backing up timer
 #define TIMER2_RESP_FUNC PostRobot_HSM //turning timer
-#define TIMER3_RESP_FUNC PostRobot_HSM //scoop timer
-#define TIMER4_RESP_FUNC PostRobot_HSM //pause timer
+#define TIMER3_RESP_FUNC PostUnloadScoopService //scoop timer
+#define TIMER4_RESP_FUNC PostUnloadScoopService //pause timer
 #define TIMER5_RESP_FUNC TIMER_UNUSED
 #define TIMER6_RESP_FUNC TIMER_UNUSED
 #define TIMER7_RESP_FUNC TIMER_UNUSED
@@ -138,7 +138,7 @@ static const char *EventNames[] = {
 /****************************************************************************/
 // This macro determines that nuber of services that are *actually* used in
 // a particular application. It will vary in value from 1 to MAX_NUM_SERVICES
-#define NUM_SERVICES 2
+#define NUM_SERVICES 3
 
 /****************************************************************************/
 // These are the definitions for Service 0, the lowest priority service
@@ -170,11 +170,11 @@ static const char *EventNames[] = {
 // These are the definitions for Service 2
 #if NUM_SERVICES > 2
 // the header file with the public fuction prototypes
-#define SERV_2_HEADER "TestService.h"
+#define SERV_2_HEADER "UnloadScoopService.h"
 // the name of the Init function
-#define SERV_2_INIT TestServiceInit
+#define SERV_2_INIT InitUnloadScoopService
 // the name of the run function
-#define SERV_2_RUN TestServiceRun
+#define SERV_2_RUN RunUnloadScoopService
 // How big should this services Queue be?
 #define SERV_2_QUEUE_SIZE 3
 #endif
