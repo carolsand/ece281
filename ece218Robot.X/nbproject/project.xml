@@ -15,6 +15,7 @@
             <sourceRootList>
                 <sourceRootElem>../ece218Robot.X</sourceRootElem>
                 <sourceRootElem>C:\ECE118</sourceRootElem>
+                <sourceRootElem>C:\devprojects\ECE118</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
